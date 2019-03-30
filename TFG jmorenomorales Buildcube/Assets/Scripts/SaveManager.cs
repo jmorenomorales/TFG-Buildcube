@@ -5,22 +5,32 @@ using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
-    public GameObject saveMenu;
-    public GameObject confirmMenu;
+    public GameObject saveMenuENG, saveMenuESP;
+    public GameObject confirmMenuENG, confirmMenuESP;
+    public GameObject settingsMenuENG, settingsMenuESP;
+    public GameObject confirmMenuRefreshENG, confirmMenuRefreshESP;
+    public GameObject colorPanel;
 
     public InputField buildNameInput;
 
-    public Transform saveList;
+    public Transform saveListENG, saveListESP;
     public GameObject savePrefab;
 
     private int saveCounter = 0;
-    private bool isSaving;
+    private bool isSaving, isEnglish;
 
     public Dictionary<string, int> saves;
+
+    public Button saveButton;
+    public Sprite saveDes;
 
     private void Start()
     {
         RefreshSaves();
+        if (PlayerPrefs.GetString("LANGUAGE") == "ENG")
+            isEnglish = true;
+        else
+            isEnglish = false;
     }
 
     private void RefreshSaves()
@@ -37,27 +47,78 @@ public class SaveManager : MonoBehaviour
 
     public void OnSaveMenuClick()
     {
-        saveMenu.SetActive(true);
-        RefreshSaveList();
+        if (colorPanel.activeSelf)
+            colorPanel.SetActive(false);
+
+        if(isEnglish)
+        {
+            if (saveMenuENG.activeSelf)
+                saveMenuENG.SetActive(false);
+            else
+            {
+                saveMenuENG.SetActive(true);
+                RefreshSaveList();
+            }
+        }
+        else
+        {
+            if (saveMenuESP.activeSelf)
+                saveMenuESP.SetActive(false);
+            else
+            {
+                saveMenuESP.SetActive(true);
+                RefreshSaveList();
+            }
+        }
     }
 
     public void OnSaveClick()
     {
-        saveMenu.SetActive(false);
-        confirmMenu.SetActive(true);
+        if(isEnglish)
+        {
+            saveMenuENG.SetActive(false);
+            confirmMenuENG.SetActive(true);
+        }
+            
+        else
+        {
+            saveMenuESP.SetActive(false);
+            confirmMenuESP.SetActive(true);
+        }
+
         isSaving = true;
     }
 
     public void OnLoadClick()
     {
-        saveMenu.SetActive(false);
-        confirmMenu.SetActive(true);
+        if (isEnglish)
+        {
+            saveMenuENG.SetActive(false);
+            confirmMenuENG.SetActive(true);
+        }
+
+        else
+        {
+            saveMenuESP.SetActive(false);
+            confirmMenuESP.SetActive(true);
+        }
+
         isSaving = false;
     }
 
     public void OnCancelClick()
     {
-        saveMenu.SetActive(false);
+        if (isEnglish)
+        {
+            saveMenuENG.SetActive(false);
+        }
+
+        else
+        {
+            saveMenuESP.SetActive(false);
+        }
+
+        saveButton.image.sprite = saveDes;
     }
 
     public void OnConfirmOk()
@@ -67,12 +128,32 @@ public class SaveManager : MonoBehaviour
         else
             Load();
 
-        confirmMenu.SetActive(false);
+        if (isEnglish)
+        {
+            confirmMenuENG.SetActive(false);
+        }
+
+        else
+        {
+            confirmMenuESP.SetActive(false);
+        }
+
+        saveButton.image.sprite = saveDes;
     }
 
     public void OnConfirmCancel()
     {
-        confirmMenu.SetActive(false);
+        if (isEnglish)
+        {
+            confirmMenuENG.SetActive(false);
+        }
+
+        else
+        {
+            confirmMenuESP.SetActive(false);
+        }
+
+        saveButton.image.sprite = saveDes;
     }
 
     public void OnDelete()
@@ -100,7 +181,17 @@ public class SaveManager : MonoBehaviour
         RefreshSaves();
         //GameManager.Instance.ResetGrid();
 
-        saveMenu.SetActive(false);
+        if (isEnglish)
+        {
+            saveMenuENG.SetActive(false);
+        }
+
+        else
+        {
+            saveMenuESP.SetActive(false);
+        }
+
+        saveButton.image.sprite = saveDes;
     }
 
     private void Save()
@@ -116,11 +207,11 @@ public class SaveManager : MonoBehaviour
 
         Block[,,] b = GameManager.Instance.blocks;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 20; i++)
         {
-            for (int j = 0; j < 50; j++)
+            for (int j = 0; j < 100; j++)
             {
-                for (int k = 0; k < 10; k++)
+                for (int k = 0; k < 20; k++)
                 {
                     Block currentBlock = b[i, j, k];
                     if (currentBlock == null)
@@ -185,27 +276,159 @@ public class SaveManager : MonoBehaviour
 
     private void RefreshSaveList()
     {
-        foreach (Transform t in saveList)
+        if(isEnglish)
         {
-            Destroy(t.gameObject);
+            foreach (Transform t in saveListENG)
+            {
+                Destroy(t.gameObject);
+            }
+
+            for (int i = 0; i < saveCounter; i++)
+            {
+                GameObject go = Instantiate(savePrefab) as GameObject;
+                go.transform.SetParent(saveListENG);
+
+                string[] saveData = PlayerPrefs.GetString(i.ToString()).Split('%');
+
+                go.GetComponentInChildren<Text>().text = saveData[0];
+
+                string s = saveData[0];
+                go.GetComponent<Button>().onClick.AddListener(() => OnSaveClick(s));
+            }
+        }
+        else
+        {
+            foreach (Transform t in saveListESP)
+            {
+                Destroy(t.gameObject);
+            }
+
+            for (int i = 0; i < saveCounter; i++)
+            {
+                GameObject go = Instantiate(savePrefab) as GameObject;
+                go.transform.SetParent(saveListESP);
+
+                string[] saveData = PlayerPrefs.GetString(i.ToString()).Split('%');
+
+                go.GetComponentInChildren<Text>().text = saveData[0];
+
+                string s = saveData[0];
+                go.GetComponent<Button>().onClick.AddListener(() => OnSaveClick(s));
+            }
+        }
+    }
+
+    public void OnRefreshClick()
+    {
+        if(isEnglish)
+        {
+            confirmMenuRefreshENG.SetActive(true);
+        }
+        else
+        {
+            confirmMenuRefreshESP.SetActive(true);
+        }
+    }
+
+    public void OnRefreshOk()
+    {
+        if (isEnglish)
+        {
+            confirmMenuRefreshENG.SetActive(false);
+        }
+        else
+        {
+            confirmMenuRefreshESP.SetActive(false);
         }
 
-        for(int i = 0; i < saveCounter; i++)
+        GameManager.Instance.ResetGrid();
+    }
+
+    public void OnRefreshCancel()
+    {
+        if (isEnglish)
         {
-            GameObject go = Instantiate(savePrefab) as GameObject;
-            go.transform.SetParent(saveList);
-
-            string[] saveData = PlayerPrefs.GetString(i.ToString()).Split('%');
-
-            go.GetComponentInChildren<Text>().text = saveData[0];
-
-            string s = saveData[0];
-            go.GetComponent<Button>().onClick.AddListener(() => OnSaveClick(s));
+            confirmMenuRefreshENG.SetActive(false);
+        }
+        else
+        {
+            confirmMenuRefreshESP.SetActive(false);
         }
     }
 
     private void OnSaveClick(string name)
     {
         buildNameInput.text = name;
+    }
+
+    public void OnSpanishFlagClick()
+    {
+        isEnglish = false;
+        settingsMenuESP.SetActive(true);
+        settingsMenuENG.SetActive(false);
+        PlayerPrefs.SetString("LANGUAGE", "ESP");
+    }
+
+    public void OnEnglishFlagClick()
+    {
+        isEnglish = true;
+        settingsMenuENG.SetActive(true);
+        settingsMenuESP.SetActive(false);
+        PlayerPrefs.SetString("LANGUAGE", "ENG");
+    }
+
+    public void OnSettingsClick()
+    {
+        if (PlayerPrefs.GetString("LANGUAGE") == "ENG")
+        {
+            settingsMenuENG.SetActive(true);
+            if (saveMenuENG.activeSelf)
+            {
+                saveMenuENG.SetActive(false);
+                saveButton.image.sprite = saveDes;
+            }
+            if (confirmMenuENG.activeSelf)
+            {
+                confirmMenuENG.SetActive(false);
+                saveButton.image.sprite = saveDes;
+            }
+            if (confirmMenuRefreshENG.activeSelf)
+            {
+                confirmMenuRefreshENG.SetActive(false);
+                saveButton.image.sprite = saveDes;
+            }
+        }
+        else
+        {
+            settingsMenuESP.SetActive(true);
+            if (saveMenuESP.activeSelf)
+            {
+                saveMenuESP.SetActive(false);
+                saveButton.image.sprite = saveDes;
+            }
+            if (confirmMenuESP.activeSelf)
+            {
+                confirmMenuESP.SetActive(false);
+                saveButton.image.sprite = saveDes;
+            }
+            if (confirmMenuRefreshESP.activeSelf)
+            {
+                confirmMenuRefreshESP.SetActive(false);
+                saveButton.image.sprite = saveDes;
+            }
+        }
+    }
+
+    public void OnResumeClick()
+    {
+        if (isEnglish)
+            settingsMenuENG.SetActive(false);
+        else
+            settingsMenuESP.SetActive(false);
+    }
+
+    public void OnMainMenuClick()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }

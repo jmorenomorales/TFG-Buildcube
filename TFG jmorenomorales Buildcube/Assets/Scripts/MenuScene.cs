@@ -8,15 +8,25 @@ public class MenuScene : MonoBehaviour
     public Material[] mats;
     public GameObject blockPrefab;
     public GameObject previewContainer;
-    public Text previewName;
+    public Text previewNameENG, previewNameESP;
 
     private int saveCounter;
     private int previewIndex;
 
     private Vector3 startClick;
 
+    public GameObject mainMenuCanvasENG;
+    public GameObject mainMenuCanvasESP;
+    public GameObject settingsCanvasENG;
+    public GameObject settingsCanvasESP;
+
     private void Start()
     {
+        if (PlayerPrefs.GetString("LANGUAGE") == "ENG")
+            mainMenuCanvasENG.SetActive(true);
+        else
+            mainMenuCanvasESP.SetActive(true);
+
         saveCounter = 0;
         previewIndex = 0;
 
@@ -87,7 +97,9 @@ public class MenuScene : MonoBehaviour
         string data = PlayerPrefs.GetString(key.ToString());
         string[] blockData = data.Split('%');
 
-        previewName.text = blockData[0];
+        previewNameENG.text = blockData[0];
+        previewNameESP.text = blockData[0];
+
 
         for (int i = 1; i < blockData.Length - 1; i++)
         {
@@ -109,11 +121,63 @@ public class MenuScene : MonoBehaviour
 
     private void RotatePreview()
     {
-        previewContainer.transform.RotateAround(new Vector3(5,0,5),Vector3.up, 35 * Time.deltaTime);
+        previewContainer.transform.RotateAround(new Vector3(10,0,10),Vector3.up, 35 * Time.deltaTime);
     }
 
     public void OnPlayClick()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+    }
+    
+    public void OnSettingsClick()
+    {
+        if (mainMenuCanvasENG.activeSelf)
+        {
+            mainMenuCanvasENG.SetActive(false);
+            previewContainer.SetActive(false);
+            settingsCanvasENG.SetActive(true);
+        }
+        else
+        {
+            mainMenuCanvasESP.SetActive(false);
+            previewContainer.SetActive(false);
+            settingsCanvasESP.SetActive(true);
+        }
+       
+
+        // activar cosas del settings
+    }
+
+    public void OnBackSettingsClick()
+    {
+
+        if (settingsCanvasENG.activeSelf)
+        {
+            settingsCanvasENG.SetActive(false);
+            mainMenuCanvasENG.SetActive(true);
+            previewContainer.SetActive(true);
+        }
+        else
+        {
+            settingsCanvasESP.SetActive(false);
+            mainMenuCanvasESP.SetActive(true);
+            previewContainer.SetActive(true);
+        }
+    }
+
+    public void OnSpanish()
+    {
+        // guardar en la preferencia el idioma español
+        PlayerPrefs.SetString("LANGUAGE", "ESP");
+        settingsCanvasENG.SetActive(false);
+        settingsCanvasESP.SetActive(true);
+    }
+
+    public void OnEnglish()
+    {
+        // guardar en la preferencia el idioma inglés
+        PlayerPrefs.SetString("LANGUAGE", "ENG");
+        settingsCanvasESP.SetActive(false);
+        settingsCanvasENG.SetActive(true);
     }
 }

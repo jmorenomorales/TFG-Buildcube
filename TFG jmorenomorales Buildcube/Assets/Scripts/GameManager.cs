@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Block
 {
@@ -12,9 +13,35 @@ public class Block
 public enum BlockColor
 {
     White = 0,
-    Red = 1,
-    Green = 2,
-    Blue = 3
+    Grey = 1,
+    Black = 2,
+    LightRed = 3,
+    Red = 4,
+    DarkRed = 5,
+    LightPink = 6,
+    Pink = 7,
+    DarkPink = 8,
+    LightPurple = 9,
+    Purple = 10,
+    DarkPurple = 11,
+    LightBlue = 12,
+    Blue = 13,
+    DarkBlue = 14,
+    LightFancyBlue = 15,
+    FancyBlue = 16,
+    DarkFancyBlue = 17,
+    LightTurquoise = 18,
+    Turquoise = 19,
+    DarkTurquoise = 20,
+    LightGreen = 21,
+    Green = 22,
+    DarkGreen = 23,
+    LightYellow = 24,
+    Yellow = 25,
+    DarkYellow = 26,
+    LightOrange = 27,
+    Orange = 28,
+    DarkOrange = 29,
 }
 
 public struct BlockAction
@@ -29,10 +56,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { set; get; }
 
     // Definimos la escala de los bloques
-    private float blockSize = 0.25f;
+    private float blockSize = 0.125f;
 
     // Array contenedor de los bloques
-    public Block[,,] blocks = new Block[10, 50, 10];
+    public Block[,,] blocks = new Block[20, 100, 20];
     // Prefab de los bloques
     public GameObject blockPrefab;
 
@@ -50,6 +77,14 @@ public class GameManager : MonoBehaviour
     // Comprobamos si el botón de borrar está activo
     private bool isDeleting;
 
+    public Button deleteButton, colorButton;
+    public Sprite[] deleteButtons;
+
+    public GameObject colorPanel;
+    public Button[] colorButtons;
+    public Sprite[] colorButtonsSprites;
+    public Sprite colorDes;
+
     private BlockAction previewAction;
 
     private void Start()
@@ -57,10 +92,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
         // Buscamos en la escena el objeto con nombre "Foundation"
         foundationObject = GameObject.Find("Foundation");
-        blockOffset = (Vector3.one * 0.5f) / 4;
+        blockOffset = (Vector3.one * 0.5f) / 8;
 
         // Por defecto ponemos el color blanco
         selectedColor = BlockColor.White;
+        colorButtons[0].image.sprite = colorButtonsSprites[1];
 
         // Por defecto el botón y el booleano estará desactivado
         isDeleting = false;
@@ -71,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                 return;
 
             RaycastHit hit;
@@ -197,17 +233,43 @@ public class GameManager : MonoBehaviour
     {
         selectedColor = (BlockColor)color;
         if (isDeleting == true) isDeleting = false;
+
+        deleteButton.image.sprite = deleteButtons[0];
+
+        for(int i = 0; i < colorButtons.Length; i++)
+        {
+            if (color == i)
+                colorButtons[i].image.sprite = colorButtonsSprites[1];
+            else
+                colorButtons[i].image.sprite = colorButtonsSprites[0];
+        }
+
+        colorButton.image.sprite = colorDes;
+
+        colorPanel.SetActive(false);
     }
 
     // Boton de borrar bloques
     public void ToggleDelete()
     {
+        if (colorPanel.activeSelf)
+        {
+            colorPanel.SetActive(false);
+            colorButton.image.sprite = colorDes;
+        }
         isDeleting = !isDeleting;
+        deleteButton.image.sprite = (!isDeleting) ? deleteButtons[0] : deleteButtons[1];
     }
 
     public void Undo()
     {
-        if(previewAction.delete)
+        if (colorPanel.activeSelf)
+        {
+            colorPanel.SetActive(false);
+            colorButton.image.sprite = colorDes;
+        }
+            
+        if (previewAction.delete)
         {
             //Spawn it back
             
@@ -246,11 +308,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetGrid()
     {
-        for(int i = 0; i< 10; i++)
+        if (colorPanel.activeSelf)
+            colorPanel.SetActive(false);
+        for (int i = 0; i< 20; i++)
         {
-            for (int j = 0; j < 50; j++)
+            for (int j = 0; j < 100; j++)
             {
-                for (int k = 0; k < 10; k++)
+                for (int k = 0; k < 20; k++)
                 {
                     if (blocks[i, j, k] == null)
                         continue;
