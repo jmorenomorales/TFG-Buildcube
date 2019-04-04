@@ -12,6 +12,8 @@ public class MenuScene : MonoBehaviour
 
     private int saveCounter;
     private int previewIndex;
+    private string gridtype = "0";
+    private float gridtypeFloat;
 
     private Vector3 startClick;
 
@@ -19,6 +21,7 @@ public class MenuScene : MonoBehaviour
     public GameObject mainMenuCanvasESP;
     public GameObject settingsCanvasENG;
     public GameObject settingsCanvasESP;
+    public GameObject gridSelect;
 
     private void Start()
     {
@@ -40,7 +43,7 @@ public class MenuScene : MonoBehaviour
 
     private void Update()
     {
-        RotatePreview();
+        RotatePreview(gridtype);
 
         if(Input.GetMouseButtonDown(0))
         {
@@ -100,8 +103,26 @@ public class MenuScene : MonoBehaviour
         previewNameENG.text = blockData[0];
         previewNameESP.text = blockData[0];
 
+        gridtype = blockData[blockData.Length - 2];
 
-        for (int i = 1; i < blockData.Length - 1; i++)
+        // Cambiar posicion de camara
+        switch (blockData[blockData.Length - 2])
+        {
+            case "5":
+                ChangeGridtypeFloat("0");
+                GameObject.Find("Main Camera").transform.position = new Vector3(2.4f, 27.7f, -22.8f);
+                break;
+            case "10":
+                ChangeGridtypeFloat("1");
+                GameObject.Find("Main Camera").transform.position = new Vector3(5.5f, 45f, -34.8f);
+                break;
+            case "20":
+                ChangeGridtypeFloat("2");
+                GameObject.Find("Main Camera").transform.position = new Vector3(10.62f, 55.5f, -44.5f);
+                break;
+        }
+
+        for (int i = 1; i < blockData.Length - 2; i++)
         {
             string[] currentBlock = blockData[i].Split('|');
             int x = int.Parse(currentBlock[0]);
@@ -119,16 +140,43 @@ public class MenuScene : MonoBehaviour
         }
     }
 
-    private void RotatePreview()
+    private void RotatePreview(string gridtype)
     {
-        previewContainer.transform.RotateAround(new Vector3(10,0,10),Vector3.up, 35 * Time.deltaTime);
+        previewContainer.transform.RotateAround(new Vector3(gridtypeFloat, 0, gridtypeFloat), Vector3.up, 35 * Time.deltaTime);
+    }
+
+    private void ChangeGridtypeFloat(string gridtype)
+    {
+        switch (gridtype)
+        {
+            case "0":
+                gridtypeFloat = 2.5f;
+                break;
+            case "1":
+                gridtypeFloat = 5f;
+                break;
+            case "2":
+                gridtypeFloat = 10f;
+                break;
+        }
+    }
+
+    public void OnPlayClick(int gridnum)
+    {
+        PlayerPrefs.SetInt("GRIDTYPE", gridnum);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     public void OnPlayClick()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        if(PlayerPrefs.GetString("LANGUAGE") == "ENG")
+            mainMenuCanvasENG.SetActive(false);
+        else
+            mainMenuCanvasESP.SetActive(false);
+
+        gridSelect.SetActive(true);
     }
-    
+
     public void OnSettingsClick()
     {
         if (mainMenuCanvasENG.activeSelf)

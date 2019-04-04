@@ -9,7 +9,8 @@ public class UIManager : MonoBehaviour
     public RectTransform actionMenu;
     public Sprite eraseDes, eraseSel, saveDes, saveSel, colorDes, colorSel;
     public Button eraseButton, saveButton, colorButton;
-    public GameObject colorPanel, savePanel;
+    public GameObject colorPanel, savePanel, foundation;
+    public Toggle togglePictureModeENG, togglePictureModeESP;
 
     private bool menuAnimating;
     private bool areMenusShowing;
@@ -26,7 +27,7 @@ public class UIManager : MonoBehaviour
         {
             if (areMenusShowing)
             {
-                menuAnimationTransition += Time.deltaTime * (1-animationDuration);
+                menuAnimationTransition += Time.deltaTime * (1 - animationDuration);
                 if (menuAnimationTransition >= 1)
                 {
                     menuAnimationTransition = 1;
@@ -43,8 +44,8 @@ public class UIManager : MonoBehaviour
                 }
             }
 
-            colorMenu.anchoredPosition = Vector2.Lerp(new Vector2(0, 1000), new Vector2(0, -250), menuAnimationTransition);
-            actionMenu.anchoredPosition = Vector2.Lerp(new Vector2(-750,0), new Vector2(250, 0), menuAnimationTransition);
+            //colorMenu.anchoredPosition = Vector2.Lerp(new Vector2(0, 1000), new Vector2(0, -250), menuAnimationTransition);
+            //actionMenu.anchoredPosition = Vector2.Lerp(new Vector2(-750,0), new Vector2(250, 0), menuAnimationTransition);
         }
     }
 
@@ -61,7 +62,7 @@ public class UIManager : MonoBehaviour
 
     public void ChangeImage(int buttonType)
     {
-        switch(buttonType)
+        switch (buttonType)
         {
             case 0: // Erase
                 /*if (eraseButton.image.sprite == eraseSel)
@@ -110,4 +111,33 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void onTogglePictureClick()
+    {
+        if (PlayerPrefs.GetString("LANGUAGE") == "ENG")
+        {
+            if (togglePictureModeENG.isOn)
+            {
+                togglePictureModeESP.isOn = true;
+                foundation.SetActive(false);
+            }
+            else
+            {
+                togglePictureModeESP.isOn = false;
+                foundation.SetActive(true);
+            }
+        }
+        else
+        {
+            if (togglePictureModeESP.isOn)
+            {
+                togglePictureModeENG.isOn = true;
+                foundation.SetActive(false);
+            }
+            else
+            {
+                togglePictureModeENG.isOn = false;
+                foundation.SetActive(true);
+            }
+        }
+    }
 }

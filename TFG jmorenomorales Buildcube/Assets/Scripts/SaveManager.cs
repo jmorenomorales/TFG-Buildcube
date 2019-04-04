@@ -11,7 +11,7 @@ public class SaveManager : MonoBehaviour
     public GameObject confirmMenuRefreshENG, confirmMenuRefreshESP;
     public GameObject colorPanel;
 
-    public InputField buildNameInput;
+    public InputField buildNameInputENG, buildNameInputESP;
 
     public Transform saveListENG, saveListESP;
     public GameObject savePrefab;
@@ -158,7 +158,11 @@ public class SaveManager : MonoBehaviour
 
     public void OnDelete()
     {
-        string buildName = buildNameInput.text;
+        string buildName;
+        if (isEnglish)
+            buildName = buildNameInputENG.text;
+        else
+            buildName = buildNameInputESP.text;
         int k;
         saves.TryGetValue(buildName, out k);
 
@@ -196,7 +200,12 @@ public class SaveManager : MonoBehaviour
 
     private void Save()
     {
-        string buildName = buildNameInput.text;
+        string buildName;
+        if (isEnglish)
+            buildName = buildNameInputENG.text;
+        else
+            buildName = buildNameInputESP.text;
+        Debug.Log("BuildName " + buildName);
         bool isUsed = (saves.ContainsKey(buildName));
 
         if (string.IsNullOrEmpty(buildName))
@@ -207,11 +216,11 @@ public class SaveManager : MonoBehaviour
 
         Block[,,] b = GameManager.Instance.blocks;
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < GameManager.Instance.blocks.GetLength(0); i++)
         {
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < GameManager.Instance.blocks.GetLength(1); j++)
             {
-                for (int k = 0; k < 20; k++)
+                for (int k = 0; k < GameManager.Instance.blocks.GetLength(2); k++)
                 {
                     Block currentBlock = b[i, j, k];
                     if (currentBlock == null)
@@ -225,7 +234,10 @@ public class SaveManager : MonoBehaviour
             }
         }
 
-        if(isUsed)
+        saveData += GameManager.Instance.blocks.GetLength(0) + "%";
+        Debug.Log(saveData);
+
+        if (isUsed)
         {
             // Overwrite
             int k;
@@ -244,7 +256,11 @@ public class SaveManager : MonoBehaviour
 
     private void Load()
     {
-        string buildName = buildNameInput.text;
+        string buildName;
+        if (isEnglish)
+            buildName = buildNameInputENG.text;
+        else
+            buildName = buildNameInputESP.text;
         int k;
         saves.TryGetValue(buildName, out k);
 
@@ -258,8 +274,23 @@ public class SaveManager : MonoBehaviour
         string[] blockData = save.Split('%');
 
         GameManager.Instance.ResetGrid();
+        
+        Debug.Log(blockData[blockData.Length - 2]);
+        
+        switch(blockData[blockData.Length-2])
+        {
+            case "5":
+                GameManager.Instance.GridSettings(0);
+                break;
+            case "10":
+                GameManager.Instance.GridSettings(1);
+                break;
+            case "20":
+                GameManager.Instance.GridSettings(2);
+                break;
+        }
 
-        for (int i = 1; i < blockData.Length - 1; i++)
+        for (int i = 1; i < blockData.Length - 2; i++)
         {
             string[] currentBlock = blockData[i].Split('|');
             int x = int.Parse(currentBlock[0]);
@@ -358,7 +389,10 @@ public class SaveManager : MonoBehaviour
 
     private void OnSaveClick(string name)
     {
-        buildNameInput.text = name;
+        if (isEnglish)
+            buildNameInputENG.text = name;
+        else
+            buildNameInputESP.text = name;
     }
 
     public void OnSpanishFlagClick()

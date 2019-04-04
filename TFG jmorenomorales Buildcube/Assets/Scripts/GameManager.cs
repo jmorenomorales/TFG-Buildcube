@@ -55,27 +55,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
 
-    // Definimos la escala de los bloques
-    private float blockSize = 0.125f;
-
-    // Array contenedor de los bloques
-    public Block[,,] blocks = new Block[20, 100, 20];
-    // Prefab de los bloques
-    public GameObject blockPrefab;
-
-    // Enum del color seleccionado
-    public BlockColor selectedColor;
-    // Array contenedor de los materiales de los bloques
-    public Material[] blockMaterials;
-
-    // Guardamos el objeto base (plano)
-    private GameObject foundationObject;
-    // Damos un offset a los cubos ya que su pivote esta en el centro
-    private Vector3 blockOffset;
-    // Establecemos el centro del plano
-    private Vector3 foundationCenter = new Vector3(1.25f, 0, 1.25f);
-    // Comprobamos si el botón de borrar está activo
-    private bool isDeleting;
+    private float[][] gridSettings;                                     // Recogemos la configuración del grid elegida por el usuario
+    private float blockSize;                                            // Definimos la escala de los bloques
+    public Block[,,] blocks;                                            // Array contenedor de los bloques
+    public GameObject blockPrefab;                                      // Prefab de los bloques
+    
+    public BlockColor selectedColor;                                    // Enum del color seleccionado
+    public Material[] blockMaterials;                                   // Array contenedor de los materiales de los bloques
+    public Material[] gridMaterials;
+    
+    private GameObject foundationObject;                                // Guardamos el objeto base (plano)
+    
+    private Vector3 blockOffset;                                        // Damos un offset a los cubos ya que su pivote esta en el centro
+    private Vector3 foundationCenter = new Vector3(1.25f, 0, 1.25f);    // Establecemos el centro del plano
+    
+    private bool isDeleting;                                            // Comprobamos si el botón de borrar está activo
 
     public Button deleteButton, colorButton;
     public Sprite[] deleteButtons;
@@ -85,14 +79,19 @@ public class GameManager : MonoBehaviour
     public Sprite[] colorButtonsSprites;
     public Sprite colorDes;
 
-    private BlockAction previewAction;
+    private Stack<BlockAction> playerActions;
+    private BlockAction playerAction;
 
     private void Start()
     {
         Instance = this;
         // Buscamos en la escena el objeto con nombre "Foundation"
         foundationObject = GameObject.Find("Foundation");
-        blockOffset = (Vector3.one * 0.5f) / 8;
+
+        playerActions = new Stack<BlockAction>();
+
+        GridSettings(PlayerPrefs.GetInt("GRIDTYPE"));
+        foundationObject.GetComponent<Renderer>().material = gridMaterials[PlayerPrefs.GetInt("GRIDTYPE")];
 
         // Por defecto ponemos el color blanco
         selectedColor = BlockColor.White;
@@ -107,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            if (EventSystem.current.IsPointerOverGameObject() /*EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId*/)
                 return;
 
             RaycastHit hit;
@@ -124,12 +123,14 @@ public class GameManager : MonoBehaviour
                         Destroy(blocks[(int)oldCubeIndex.x, (int)oldCubeIndex.y, (int)oldCubeIndex.z].blockTransform.gameObject);
                         blocks[(int)oldCubeIndex.x, (int)oldCubeIndex.y, (int)oldCubeIndex.z] = null;
 
-                        previewAction = new BlockAction()
+                        playerAction = new BlockAction()
                         {
                             delete = true,
                             index = oldCubeIndex,
                             color = previousColor
                         };
+
+                        playerActions.Push(playerAction);
                     }
                     
                     return;
@@ -155,12 +156,14 @@ public class GameManager : MonoBehaviour
                         color = selectedColor
                     };
 
-                    previewAction = new BlockAction()
+                    playerAction = new BlockAction()
                     {
                         delete = false,
                         index = new Vector3(x,y,z),
                         color = selectedColor
                     };
+
+                    playerActions.Push(playerAction);
                 }
                 // En caso de que lo haya, se crea uno en la cara
                 // hiteada usando la normal del bloque seleccionado
@@ -178,12 +181,14 @@ public class GameManager : MonoBehaviour
 
                     PositionBlock(go.transform, newIndex);
 
-                    previewAction = new BlockAction()
+                    playerAction = new BlockAction()
                     {
                         delete = false,
                         index = newIndex,
                         color = selectedColor
                     };
+
+                    playerActions.Push(playerAction);
                 }
             }
         }
@@ -268,41 +273,34 @@ public class GameManager : MonoBehaviour
             colorPanel.SetActive(false);
             colorButton.image.sprite = colorDes;
         }
-            
-        if (previewAction.delete)
+
+        if(playerActions.Count != 0)
         {
-            //Spawn it back
+            BlockAction helper = playerActions.Pop();
             
-            GameObject go = CreateBlock();
-
-            blocks[(int)previewAction.index.x, (int)previewAction.index.y, (int)previewAction.index.z] = new Block
+            // Si la última acción ha sido de colocar un bloque
+            if(!helper.delete)
             {
-                blockTransform = go.transform,
-                color = selectedColor
-            };
-
-            PositionBlock(go.transform, previewAction.index);
-
-            previewAction = new BlockAction()
+                Destroy(blocks[(int)helper.index.x, (int)helper.index.y, (int)helper.index.z].blockTransform.gameObject);
+                blocks[(int)helper.index.x, (int)helper.index.y, (int)helper.index.z] = null;
+            }
+            //Si la última acción ha sido de borrar
+            else
             {
-                delete = false,
-                index = previewAction.index,
-                color = previewAction.color
-            };
+                GameObject go = CreateBlock();
+
+                blocks[(int)helper.index.x, (int)helper.index.y, (int)helper.index.z] = new Block
+                {
+                    blockTransform = go.transform,
+                    color = selectedColor
+                };
+
+                PositionBlock(go.transform, helper.index);
+            }
         }
         else
         {
-            //Delete the block
-            
-            Destroy(blocks[(int)previewAction.index.x, (int)previewAction.index.y, (int)previewAction.index.z].blockTransform.gameObject);
-            blocks[(int)previewAction.index.x, (int)previewAction.index.y, (int)previewAction.index.z] = null;
-
-            previewAction = new BlockAction()
-            {
-                delete = true,
-                index = previewAction.index,
-                color = previewAction.color
-            };
+            Debug.Log("Ya no queda nada...");
         }
     }
 
@@ -310,11 +308,11 @@ public class GameManager : MonoBehaviour
     {
         if (colorPanel.activeSelf)
             colorPanel.SetActive(false);
-        for (int i = 0; i< 20; i++)
+        for (int i = 0; i< GameManager.Instance.blocks.GetLength(0); i++)
         {
-            for (int j = 0; j < 100; j++)
+            for (int j = 0; j < GameManager.Instance.blocks.GetLength(1); j++)
             {
-                for (int k = 0; k < 20; k++)
+                for (int k = 0; k < GameManager.Instance.blocks.GetLength(2); k++)
                 {
                     if (blocks[i, j, k] == null)
                         continue;
@@ -322,6 +320,33 @@ public class GameManager : MonoBehaviour
                     blocks[i, j, k] = null;
                 }
             }
+        }
+    }
+
+    public void GridSettings(int gridtype)
+    {
+        switch (gridtype)
+        {
+            case 0: // 5x5
+                blockSize = 0.5f;
+                blockOffset = (Vector3.one * 0.5f) / 2;
+                blocks = new Block[5, 25, 5];
+                foundationObject.GetComponent<Renderer>().material = gridMaterials[0];
+                break;
+            case 1: // 10x10
+                blockSize = 0.25f;
+                blockOffset = (Vector3.one * 0.5f) / 4;
+                blocks = new Block[10, 50, 10];
+                foundationObject.GetComponent<Renderer>().material = gridMaterials[1];
+                break;
+            case 2: // 20x20
+                blockSize = 0.125f;
+                blockOffset = (Vector3.one * 0.5f) / 8;
+                blocks = new Block[20, 100, 200];
+                foundationObject.GetComponent<Renderer>().material = gridMaterials[2];
+                break;
+            default:
+                break;
         }
     }
 }
