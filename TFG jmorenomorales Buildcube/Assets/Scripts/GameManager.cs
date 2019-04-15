@@ -59,7 +59,8 @@ public class GameManager : MonoBehaviour
     private float blockSize;                                            // Definimos la escala de los bloques
     public Block[,,] blocks;                                            // Array contenedor de los bloques
     public GameObject blockPrefab;                                      // Prefab de los bloques
-    
+    public GameObject cubesParent;
+
     public BlockColor selectedColor;                                    // Enum del color seleccionado
     public Material[] blockMaterials;                                   // Array contenedor de los materiales de los bloques
     public Material[] gridMaterials;
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() /*EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId*/)
+            if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                 return;
 
             RaycastHit hit;
@@ -198,6 +199,8 @@ public class GameManager : MonoBehaviour
     private GameObject CreateBlock()
     {
         GameObject go = Instantiate(blockPrefab) as GameObject;
+        go.layer = 11;
+        go.transform.parent = cubesParent.transform;
         go.GetComponent<Renderer>().material = blockMaterials[(int)selectedColor];
         go.transform.localScale = Vector3.one * blockSize;
 
@@ -207,6 +210,8 @@ public class GameManager : MonoBehaviour
     public GameObject CreateBlock(int x, int y, int z, Block b)
     {
         GameObject go = Instantiate(blockPrefab) as GameObject;
+        go.layer = 11;
+        go.transform.parent = cubesParent.transform;
         go.GetComponent<Renderer>().material = blockMaterials[(int)b.color];
         go.transform.localScale = Vector3.one * blockSize;
 

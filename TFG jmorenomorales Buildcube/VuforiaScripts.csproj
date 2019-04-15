@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{6483441F-8780-56AC-DBC7-798028689EA6}</ProjectGuid>
+    <ProjectGuid>{4254C0A5-4CD3-63DD-C56C-53AF707E6768}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>VuforiaScripts</AssemblyName>
@@ -301,20 +301,26 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="OSCsharp">
+      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/OSCsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="TUIOsharp">
+      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/TUIOsharp.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 9,10/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 9,10/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 9,10/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 9,10/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 9,10/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Desktop/TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
