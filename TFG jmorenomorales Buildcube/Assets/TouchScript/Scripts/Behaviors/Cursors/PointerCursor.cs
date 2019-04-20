@@ -191,11 +191,6 @@ namespace TouchScript.Behaviors.Cursors
         /// </summary>
         protected RectTransform rect;
 
-		/// <summary>
-		/// Cached Canvas.
-		/// </summary>
-		protected Canvas canvas;
-
         /// <summary>
         /// Cursor size.
         /// </summary>
@@ -282,7 +277,6 @@ namespace TouchScript.Behaviors.Cursors
                 enabled = false;
                 return;
             }
-			canvas = GetComponent<Canvas>();
             rect.anchorMin = rect.anchorMax = Vector2.zero;
             defaultSize = rect.sizeDelta.x;
         }
@@ -296,7 +290,8 @@ namespace TouchScript.Behaviors.Cursors
         /// </summary>
         protected virtual void hide()
         {
-			canvas.enabled = false;
+            gameObject.SetActive(false);
+            gameObject.name = "inactive pointer";
         }
 
         /// <summary>
@@ -304,7 +299,7 @@ namespace TouchScript.Behaviors.Cursors
         /// </summary>
         protected virtual void show()
         {
-			canvas.enabled = true;
+            gameObject.SetActive(true);
         }
 
         /// <summary>

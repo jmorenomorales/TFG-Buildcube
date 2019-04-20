@@ -188,7 +188,7 @@ namespace TouchScript.InputSources
         private bool emulateSecondMousePointer = true;
 
         private MouseHandler mouseHandler;
-        private TouchHandler touchHandler;
+        private TouchHandlerSticker touchHandler;
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
         private Windows8PointerHandler windows8PointerHandler;
         private Windows7PointerHandler windows7PointerHandler;
@@ -405,7 +405,7 @@ namespace TouchScript.InputSources
 
         private void enableTouch()
         {
-            touchHandler = new TouchHandler(addPointer, updatePointer, pressPointer, releasePointer, removePointer, cancelPointer);
+            touchHandler = new TouchHandlerSticker(addPointer, updatePointer, pressPointer, releasePointer, removePointer, cancelPointer);
             Debug.Log("[TouchScript] Initialized Unity touch input.");
         }
 

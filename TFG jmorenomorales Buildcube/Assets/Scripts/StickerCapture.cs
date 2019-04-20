@@ -42,7 +42,7 @@ public class StickerCapture : MonoBehaviour
     }
 
     public void OnCameraChangeMode()
-    {
+    {/*
         CameraDevice.CameraDirection currentDir = CameraDevice.Instance.GetCameraDirection();
         if (!cameraMode)
         {
@@ -55,16 +55,16 @@ public class StickerCapture : MonoBehaviour
             RestartCamera(CameraDevice.CameraDirection.CAMERA_BACK);
             cameraMode = false;
             Debug.Log("Front Camera");
-        }
+        }*/
     }
-
+    /*
     private void RestartCamera(CameraDevice.CameraDirection newDir)
     {
         CameraDevice.Instance.Stop();
         CameraDevice.Instance.Deinit();
         CameraDevice.Instance.Init(newDir);
         CameraDevice.Instance.Start();
-    }
+    }*/
 
     public void TakeImage()
     {
@@ -113,8 +113,14 @@ public class StickerCapture : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         string screenShotPath = Application.persistentDataPath + "/" + screenshotName;
+        GameObject.Find("NewGUI").GetComponent<Canvas>().enabled = false;
+        GameObject.Find("BackgroundCanvas").GetComponent<Canvas>().enabled = false;
+        yield return new WaitForEndOfFrame();
         ScreenCapture.CaptureScreenshot(screenshotName, 1);
         yield return new WaitForSeconds(0.5f);
+
+        GameObject.Find("NewGUI").GetComponent<Canvas>().enabled = true;
+        GameObject.Find("BackgroundCanvas").GetComponent<Canvas>().enabled = true;
 
         if (!Application.isEditor)
         {
@@ -161,6 +167,7 @@ public class StickerCapture : MonoBehaviour
 
         //yield return new WaitUntil(() => isFocus);
         isProcessing = false;
+        yield return new WaitUntil(() => isFocus);
     }
 
     public void CreateDirectory()

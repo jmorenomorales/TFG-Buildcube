@@ -207,6 +207,17 @@ public class GameManager : MonoBehaviour
         return go;
     }
 
+    private GameObject CreateBlock(BlockColor color)
+    {
+        GameObject go = Instantiate(blockPrefab) as GameObject;
+        go.layer = 11;
+        go.transform.parent = cubesParent.transform;
+        go.GetComponent<Renderer>().material = blockMaterials[(int)color];
+        go.transform.localScale = Vector3.one * blockSize;
+
+        return go;
+    }
+
     public GameObject CreateBlock(int x, int y, int z, Block b)
     {
         GameObject go = Instantiate(blockPrefab) as GameObject;
@@ -292,7 +303,7 @@ public class GameManager : MonoBehaviour
             //Si la última acción ha sido de borrar
             else
             {
-                GameObject go = CreateBlock();
+                GameObject go = CreateBlock(helper.color);
 
                 blocks[(int)helper.index.x, (int)helper.index.y, (int)helper.index.z] = new Block
                 {
