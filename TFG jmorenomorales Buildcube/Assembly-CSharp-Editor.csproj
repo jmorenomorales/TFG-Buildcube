@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{340D941E-AB0E-0C2B-F744-197620BCF03B}</ProjectGuid>
+    <ProjectGuid>{375B54E6-D606-79AC-115C-96E6F2E5BCD2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -100,19 +100,19 @@
     <None Include="Assets\Editor\Vuforia\Vuforia_Motorcycle_MarsLander_HL\authoringinfo.xml" />
     <None Include="Assets\Editor\Vuforia\CylinderTargetTextures\VuforiaMars_Images\authoringinfo.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -358,31 +358,31 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="OSCsharp">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Assets/TouchScript/Modules/TUIO/Libraries/OSCsharp.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/OSCsharp.dll</HintPath>
     </Reference>
     <Reference Include="TUIOsharp">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Assets/TouchScript/Modules/TUIO/Libraries/TUIOsharp.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/TUIOsharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -741,19 +741,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{07F9E253-A488-B8E2-28C0-08CCF40287AD}</Project>
+      <Project>{AE85ACF9-4608-7346-9735-30634E6D2532}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="VuforiaScripts.csproj">
-      <Project>{AEAB4D5F-3252-6130-A4A9-90E93AB64099}</Project>
+      <Project>{25404F27-F2C6-AE71-10EA-DCBBF303958D}</Project>
       <Name>VuforiaScripts</Name>
     </ProjectReference>
     <ProjectReference Include="VuforiaEditorScripts.csproj">
-      <Project>{02BDA300-5A4A-BD53-A93D-4BCA85615BDC}</Project>
+      <Project>{673D5A9B-62E3-313C-03C4-50A4B44D26D5}</Project>
       <Name>VuforiaEditorScripts</Name>
     </ProjectReference>
     <ProjectReference Include="VuforiaVersionCheckerScripts.csproj">
-      <Project>{D3D8AF59-C02C-833C-B115-40B53B1675A4}</Project>
+      <Project>{A54CAB1D-A608-2762-68A9-EE1E9EB3A398}</Project>
       <Name>VuforiaVersionCheckerScripts</Name>
     </ProjectReference>
   </ItemGroup>

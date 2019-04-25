@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D3D8AF59-C02C-833C-B115-40B53B1675A4}</ProjectGuid>
+    <ProjectGuid>{A54CAB1D-A608-2762-68A9-EE1E9EB3A398}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>VuforiaVersionCheckerScripts</AssemblyName>
@@ -305,31 +305,31 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="OSCsharp">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Assets/TouchScript/Modules/TUIO/Libraries/OSCsharp.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/OSCsharp.dll</HintPath>
     </Reference>
     <Reference Include="TUIOsharp">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Assets/TouchScript/Modules/TUIO/Libraries/TUIOsharp.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/TUIOsharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>D:/UNIVERSIDAD/_TFG/_AA/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

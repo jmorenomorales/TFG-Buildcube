@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-D:/UNIVERSIDAD/_TFG/_AA/Apk1.apk
+D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Apk2.apk
 SceneListBegin?
 Assets/_Scenes/Menu.unity
 Assets/_Scenes/Game.unity
@@ -97,7 +97,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-5990e527a9dfe13da894518482395011 Assembly-CSharp.dll:.MenuScene
+b184c9f50c499b5702452c29dcda0376 Assembly-CSharp.dll:.MenuScene
 36eec4ad2adffcd8a4600a5022430ca3 Assembly-CSharp.dll:TouchScript.Examples.Colors.Colors
 b3099a127ad5cca97853e42ed4e6b984 Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.ObjectCursor
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Examples.Multiuser.Logo
@@ -239,6 +239,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Core.DebuggableMonoBehaviour
 fd169c88069c0bcfe1aba84057b7bf83 Assembly-CSharp.dll:.ProductPlacement
 e30e777b11298474cac1ab84da360e31 Assembly-CSharp.dll:.DrillController
+311a3804ea9c81dfc244d9e091cc9830 Assembly-CSharp.dll:.UDTManager
 b35c35967bb6949fc094bfec5960c675 Assembly-CSharp.dll:.OptionsConfig
 cd016f592833fe2c50373a8efaf15e41 Assembly-CSharp.dll:.Fissure
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.RotateAroundCylinder
@@ -275,6 +276,7 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.CameraFocus
 13f8f373b951cbaf0f891949929b196a Assembly-CSharp.dll:TouchScript.Examples.RawInput.Ball
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.QualityDialog
 65cff0c7321a195a0ac679dcc2db4cb1 Assembly-CSharp.dll:TouchScript.Gestures.TransformGestures.Clustered.ClusteredScreenTransformGesture

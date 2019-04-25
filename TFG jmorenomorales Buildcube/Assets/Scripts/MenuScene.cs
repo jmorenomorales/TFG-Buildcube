@@ -8,27 +8,21 @@ public class MenuScene : MonoBehaviour
     public Material[] mats;
     public GameObject blockPrefab;
     public GameObject previewContainer;
-    public Text previewNameENG, previewNameESP;
+    public Text previewNameText;
 
-    private int saveCounter;
-    private int previewIndex;
+    private int saveCounter, previewIndex;
+    private string language, previewName;
     private string gridtype = "0";
     private float gridtypeFloat;
 
     private Vector3 startClick;
+    private bool isSwipingContainer;
 
-    public GameObject mainMenuCanvasENG;
-    public GameObject mainMenuCanvasESP;
-    public GameObject settingsCanvasENG;
-    public GameObject settingsCanvasESP;
-    public GameObject gridSelect;
+    public GameObject UI, mainMenu, settingsCanvasENG, settingsCanvasESP, gridSelect;
 
     private void Start()
     {
-        if (PlayerPrefs.GetString("LANGUAGE") == "ENG")
-            mainMenuCanvasENG.SetActive(true);
-        else
-            mainMenuCanvasESP.SetActive(true);
+        language = PlayerPrefs.GetString("LANGUAGE");
 
         saveCounter = 0;
         previewIndex = 0;
@@ -45,21 +39,51 @@ public class MenuScene : MonoBehaviour
     {
         RotatePreview(gridtype);
 
-        if(Input.GetMouseButtonDown(0))
+        // Rotar container
+        if(Input.GetMouseButtonDown(0) && Input.mousePosition.y<=520)
         {
             startClick = Input.mousePosition;
+            isSwipingContainer = true;
+        }
+
+        // Cambiar De Menú
+        else if(Input.GetMouseButtonDown(0) && Input.mousePosition.y > 520)
+        {
+            startClick = Input.mousePosition;
+            isSwipingContainer = false;
         }
 
         if(Input.GetMouseButtonUp(0))
         {
             Vector3 delta = Input.mousePosition - startClick;
 
-            if(Mathf.Abs(delta.x) > 2.5f)
+            if (isSwipingContainer)
             {
-                if (delta.x < 0)
-                    Swipe(true);
-                else
-                    Swipe(false);
+                if (Mathf.Abs(delta.x) > 2.5f)
+                {
+                    if (delta.x < 0)
+                        Swipe(true);
+                    else
+                        Swipe(false);
+                }
+            }
+            else
+            {
+                Animator animatorMM = mainMenu.GetComponentInChildren<Animator>();
+                Animator animatorGM = gridSelect.GetComponentInChildren<Animator>();
+                if (Mathf.Abs(delta.x) > 2.5f)
+                {
+                    if (delta.x < 0)
+                    {
+                        animatorMM.SetBool("GoLeftMM", true);
+                        animatorGM.SetBool("GoLeftGM", true);
+                    }
+                    else
+                    {
+                        animatorMM.SetBool("GoLeftMM", false);
+                        animatorGM.SetBool("GoLeftGM", false);
+                    }
+                }
             }
         }
     }
@@ -100,8 +124,8 @@ public class MenuScene : MonoBehaviour
         string data = PlayerPrefs.GetString(key.ToString());
         string[] blockData = data.Split('%');
 
-        previewNameENG.text = blockData[0];
-        previewNameESP.text = blockData[0];
+        previewNameText.text = blockData[0];
+        previewName = blockData[0];
 
         gridtype = blockData[blockData.Length - 2];
 
@@ -169,54 +193,56 @@ public class MenuScene : MonoBehaviour
 
     public void OnPlayClick()
     {
-        if(PlayerPrefs.GetString("LANGUAGE") == "ENG")
-            mainMenuCanvasENG.SetActive(false);
-        else
-            mainMenuCanvasESP.SetActive(false);
+        Debug.Log("He pulsado en play");
+        Animator animatorMM = mainMenu.GetComponentInChildren<Animator>();
+        Animator animatorGM = gridSelect.GetComponentInChildren<Animator>();
+        if (animatorMM != null)
+        {
+            animatorMM.SetBool("GoLeftMM", !animatorMM.GetBool("GoLeftMM"));
+            animatorGM.SetBool("GoLeftGM", !animatorGM.GetBool("GoLeftGM"));
+        }
 
         gridSelect.SetActive(true);
     }
 
     public void OnSettingsClick()
     {
-        if (mainMenuCanvasENG.activeSelf)
+        mainMenu.SetActive(false);
+        UI.SetActive(false);
+
+        if (language == "ENG")
         {
-            mainMenuCanvasENG.SetActive(false);
             previewContainer.SetActive(false);
             settingsCanvasENG.SetActive(true);
         }
         else
         {
-            mainMenuCanvasESP.SetActive(false);
             previewContainer.SetActive(false);
             settingsCanvasESP.SetActive(true);
         }
-       
-
-        // activar cosas del settings
     }
 
     public void OnBackSettingsClick()
     {
-
         if (settingsCanvasENG.activeSelf)
         {
             settingsCanvasENG.SetActive(false);
-            mainMenuCanvasENG.SetActive(true);
             previewContainer.SetActive(true);
         }
         else
         {
             settingsCanvasESP.SetActive(false);
-            mainMenuCanvasESP.SetActive(true);
             previewContainer.SetActive(true);
         }
+        mainMenu.SetActive(true);
+        UI.SetActive(true);
     }
 
     public void OnSpanish()
     {
         // guardar en la preferencia el idioma español
         PlayerPrefs.SetString("LANGUAGE", "ESP");
+        language = "ESP";
         settingsCanvasENG.SetActive(false);
         settingsCanvasESP.SetActive(true);
     }
@@ -225,6 +251,7 @@ public class MenuScene : MonoBehaviour
     {
         // guardar en la preferencia el idioma inglés
         PlayerPrefs.SetString("LANGUAGE", "ENG");
+        language = "ENG";
         settingsCanvasESP.SetActive(false);
         settingsCanvasENG.SetActive(true);
     }
