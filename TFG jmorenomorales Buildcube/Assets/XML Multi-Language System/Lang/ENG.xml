@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+
+  <English>
+  
+
+
+      <string name="PRESENTATION">Hello and welcome to Multi-Language System</string>
+      <string name="SAMPLE_TEXT_1">Here you can have some text (1).</string>
+      <string name="SAMPLE_TEXT_2">Here you can have some different text (2).</string>
+      <string name="SAMPLE_TEXT_3">Here you can have another different text (3).</string>
+
+      <string name="MESSAGE_HEADER">MESSAGE:</string>
+
+
+    
+
+      <string name="PLAY_BUTTON">PLAY</string>
+      <string name="OPTIONS_BUTTON">OPTIONS</string>
+      <string name="EXIT_BUTTON">EXIT</string>
+      <string name="RETURN_BUTTON">RETURN</string>
+
+
+      <string name="MESSAGE1_BUTTON">MESSAGE 1</string>
+      <string name="MESSAGE2_BUTTON">MESSAGE 2</string>
+      <string name="MESSAGE3_BUTTON">MESSAGE 3</string>
+    
+    
+    
+      <string name="SAMPLE_DROPDOWN_1">ENG DROP OPTION 1</string>
+      <string name="SAMPLE_DROPDOWN_2">ENG DROP OPTION 2</string>
+      <string name="SAMPLE_DROPDOWN_3">ENG DROP OPTION 3</string>
+
+    
+      <string name="SAMPLE_MESSAGE_1">Here you can have a message text (1).</string>
+      <string name="SAMPLE_MESSAGE_2">Here you can have a different message text (2).</string>
+      <string name="SAMPLE_MESSAGE_3">Here you can have another different message text (3).</string>
+
+
+      <string name="GAME_HEADER">Game Scene</string>
+      <string name="GAME_MESSAGE">This is like an in-game text.</string>
+
+     
+  </English>
+
+</languages>

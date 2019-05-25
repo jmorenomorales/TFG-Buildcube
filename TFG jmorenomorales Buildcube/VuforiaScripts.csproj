@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{25404F27-F2C6-AE71-10EA-DCBBF303958D}</ProjectGuid>
+    <ProjectGuid>{995496B8-E54F-897A-2A05-C77146147400}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>VuforiaScripts</AssemblyName>
@@ -303,31 +303,31 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="OSCsharp">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/OSCsharp.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Assets/TouchScript/Modules/TUIO/Libraries/OSCsharp.dll</HintPath>
     </Reference>
     <Reference Include="TUIOsharp">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Assets/TouchScript/Modules/TUIO/Libraries/TUIOsharp.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Assets/TouchScript/Modules/TUIO/Libraries/TUIOsharp.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Library/PackageCache/com.unity.ads@2.3.1/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/Jorge/Documents/GitHub/TFG-Buildcube/TFG jmorenomorales Buildcube/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

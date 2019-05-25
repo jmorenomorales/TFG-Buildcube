@@ -17,13 +17,16 @@ public class MenuScene : MonoBehaviour
 
     private Vector3 startClick;
     private bool isSwipingContainer;
-
-    public GameObject UI, mainMenu, settingsCanvasENG, settingsCanvasESP, gridSelect;
+    
+    public GameObject mainMenu, gameModeSelect, gridSelect, levelSelect, settingsMenu, UI;
+    private Animator mainMenuAnimator, gameModeSelectAnimator, gridSelectAnimator, levelSelectAnimator, settingsMenuAnimator;
 
     private void Start()
     {
         language = PlayerPrefs.GetString("LANGUAGE");
 
+        GetAnimators();
+        
         saveCounter = 0;
         previewIndex = 0;
 
@@ -69,19 +72,21 @@ public class MenuScene : MonoBehaviour
             }
             else
             {
-                Animator animatorMM = mainMenu.GetComponentInChildren<Animator>();
-                Animator animatorGM = gridSelect.GetComponentInChildren<Animator>();
                 if (Mathf.Abs(delta.x) > 2.5f)
                 {
                     if (delta.x < 0)
                     {
-                        animatorMM.SetBool("GoLeftMM", true);
-                        animatorGM.SetBool("GoLeftGM", true);
+                        mainMenuAnimator.SetBool("GoLeftMM", true);
+                        gameModeSelectAnimator.SetBool("GoLeftGM", true);
+                        UI.SetActive(false);
+                        previewContainer.SetActive(false);
                     }
                     else
                     {
-                        animatorMM.SetBool("GoLeftMM", false);
-                        animatorGM.SetBool("GoLeftGM", false);
+                        mainMenuAnimator.SetBool("GoLeftMM", false);
+                        gameModeSelectAnimator.SetBool("GoLeftGM", false);
+                        UI.SetActive(true);
+                        previewContainer.SetActive(true);
                     }
                 }
             }
@@ -185,6 +190,38 @@ public class MenuScene : MonoBehaviour
         }
     }
 
+    public void OnFreeClick()
+    {
+        gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
+        gridSelectAnimator.SetBool("IsGridSelectLeft", true);
+    }
+
+    public void OnChallengeClick()
+    {
+        gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
+        levelSelectAnimator.SetBool("IsLevelSelectLR", true);
+    }
+
+    public void OnBackGameModeClick()
+    {
+        mainMenuAnimator.SetBool("GoLeftMM", false);
+        gameModeSelectAnimator.SetBool("GoLeftGM", false);
+        UI.SetActive(true);
+        previewContainer.SetActive(true);
+    }
+
+    public void OnBackGridSelectClick()
+    {
+        gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
+        gridSelectAnimator.SetBool("IsGridSelectLeft", false);
+    }
+
+    public void OnBackLevelSelectClick()
+    {
+        gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
+        levelSelectAnimator.SetBool("IsLevelSelectLR", false);
+    }
+
     public void OnPlayClick(int gridnum)
     {
         PlayerPrefs.SetInt("GRIDTYPE", gridnum);
@@ -193,58 +230,32 @@ public class MenuScene : MonoBehaviour
 
     public void OnPlayClick()
     {
-        Debug.Log("He pulsado en play");
-        Animator animatorMM = mainMenu.GetComponentInChildren<Animator>();
-        Animator animatorGM = gridSelect.GetComponentInChildren<Animator>();
-        if (animatorMM != null)
+        if (mainMenuAnimator != null)
         {
-            animatorMM.SetBool("GoLeftMM", !animatorMM.GetBool("GoLeftMM"));
-            animatorGM.SetBool("GoLeftGM", !animatorGM.GetBool("GoLeftGM"));
+            mainMenuAnimator.SetBool("GoLeftMM", !mainMenuAnimator.GetBool("GoLeftMM"));
+            gameModeSelectAnimator.SetBool("GoLeftGM", !gameModeSelectAnimator.GetBool("GoLeftGM"));
+            UI.SetActive(false);
+            previewContainer.SetActive(false);
         }
-
-        gridSelect.SetActive(true);
     }
 
     public void OnSettingsClick()
     {
-        mainMenu.SetActive(false);
-        UI.SetActive(false);
-
-        if (language == "ENG")
-        {
-            previewContainer.SetActive(false);
-            settingsCanvasENG.SetActive(true);
-        }
-        else
-        {
-            previewContainer.SetActive(false);
-            settingsCanvasESP.SetActive(true);
-        }
+        gameModeSelectAnimator.SetBool("GoUpGM", true);
+        settingsMenuAnimator.SetBool("IsSwippingUp", true);
     }
 
     public void OnBackSettingsClick()
     {
-        if (settingsCanvasENG.activeSelf)
-        {
-            settingsCanvasENG.SetActive(false);
-            previewContainer.SetActive(true);
-        }
-        else
-        {
-            settingsCanvasESP.SetActive(false);
-            previewContainer.SetActive(true);
-        }
-        mainMenu.SetActive(true);
-        UI.SetActive(true);
+        gameModeSelectAnimator.SetBool("GoUpGM", false);
+        settingsMenuAnimator.SetBool("IsSwippingUp", false);
     }
 
     public void OnSpanish()
     {
-        // guardar en la preferencia el idioma español
         PlayerPrefs.SetString("LANGUAGE", "ESP");
         language = "ESP";
-        settingsCanvasENG.SetActive(false);
-        settingsCanvasESP.SetActive(true);
+        ChangeLanguage("ESP");
     }
 
     public void OnEnglish()
@@ -252,7 +263,69 @@ public class MenuScene : MonoBehaviour
         // guardar en la preferencia el idioma inglés
         PlayerPrefs.SetString("LANGUAGE", "ENG");
         language = "ENG";
-        settingsCanvasESP.SetActive(false);
-        settingsCanvasENG.SetActive(true);
+        ChangeLanguage("ENG");
     }
+
+    private void GetAnimators()
+    {
+        mainMenuAnimator = mainMenu.GetComponent<Animator>();
+        gameModeSelectAnimator = gameModeSelect.GetComponent<Animator>();
+        gridSelectAnimator = gridSelect.GetComponent<Animator>();
+        levelSelectAnimator = levelSelect.GetComponent<Animator>();
+        settingsMenuAnimator = settingsMenu.GetComponent<Animator>();
+    }
+
+    private void ChangeLanguage(string lng)
+    {
+        switch (lng)
+        {
+            case "ESP":
+                // Settings Menu
+                settingsMenu.GetComponentsInChildren<Text>()[0].text = "AJUSTES";
+                settingsMenu.GetComponentsInChildren<Text>()[1].text = "IDIOMA";
+                settingsMenu.GetComponentsInChildren<Text>()[4].text = "VOLUMEN GENERAL";
+
+                settingsMenu.GetComponentsInChildren<Button>()[2].GetComponentInChildren<Text>().text = "VOLVER";
+
+                // Gamemode Menu
+                gameModeSelect.GetComponentInChildren<Text>().text = "ELIGE EL MODO DE JUEGO";
+
+                gameModeSelect.GetComponentsInChildren<Text>()[1].text = "LIBRE";
+                gameModeSelect.GetComponentsInChildren<Text>()[2].text = "PIXEL ART";
+                gameModeSelect.GetComponentsInChildren<Text>()[3].text = "DESAFÍO";
+
+                // GridSelect Menu
+                gridSelect.GetComponentInChildren<Text>().text = "ELIGE EL TAMAÑO DEL MAPA";
+
+                // LevelSelect Menu
+                levelSelect.GetComponentInChildren<Text>().text = "SELECCIÓN DE NIVEL";
+
+                break;
+            case "ENG":
+                // Settings Menu
+                settingsMenu.GetComponentsInChildren<Text>()[0].text = "SETTINGS";
+                settingsMenu.GetComponentsInChildren<Text>()[1].text = "LANGUAGE";
+                settingsMenu.GetComponentsInChildren<Text>()[4].text = "MASTER VOLUME";
+
+                settingsMenu.GetComponentsInChildren<Button>()[2].GetComponentInChildren<Text>().text = "BACK";
+
+                // Gamemode Menu
+                gameModeSelect.GetComponentInChildren<Text>().text = "CHOOSE GAMEMODE";
+
+                gameModeSelect.GetComponentsInChildren<Text>()[1].text = "FREE";
+                gameModeSelect.GetComponentsInChildren<Text>()[2].text = "PIXEL ART";
+                gameModeSelect.GetComponentsInChildren<Text>()[3].text = "CHALLENGE";
+
+                // GridSelect Menu
+                gridSelect.GetComponentInChildren<Text>().text = "CHOOSE THE SIZE OF THE MAP";
+
+                // LevelSelect Menu
+                levelSelect.GetComponentInChildren<Text>().text = "LEVEL SELECTOR";
+
+                break;
+            default:
+                break;
+        }
+    }
+
 }

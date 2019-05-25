@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<languages>
+  
+  <Espanol>
+  
+    
+
+      <string name="PRESENTATION">Hola y bienvenidos al Multi-Language System</string>
+      <string name="SAMPLE_TEXT_1">Aquí puedes tener un texto (1).</string>
+      <string name="SAMPLE_TEXT_2">Aquí puedes tener un texto diferente (2)</string>
+      <string name="SAMPLE_TEXT_3">Aquí puedes tener otro texto diferente (3).</string>
+
+      <string name="MESSAGE_HEADER">MESAJE:</string>
+
+
+    
+
+      <string name="PLAY_BUTTON">JUGAR</string>
+      <string name="OPTIONS_BUTTON">OPCIONES</string>
+      <string name="EXIT_BUTTON">DEJAR</string>
+      <string name="RETURN_BUTTON">REGRESO</string>
+
+
+      <string name="MESSAGE1_BUTTON">MESAJE 1</string>
+      <string name="MESSAGE2_BUTTON">MESAJE 2</string>
+      <string name="MESSAGE3_BUTTON">MESAJE 3</string>
+
+      
+      <string name="SAMPLE_DROPDOWN_1">ESP DROP OPTION 1</string>
+      <string name="SAMPLE_DROPDOWN_2">ESP DROP OPTION 2</string>
+      <string name="SAMPLE_DROPDOWN_3">ESP DROP OPTION 3</string>
+
+
+      <string name="SAMPLE_MESSAGE_1">Aquí puede tener un mensaje de texto (1).</string>
+      <string name="SAMPLE_MESSAGE_2">Aquí puede tener un mensaje de texto diferente (2).</string>
+      <string name="SAMPLE_MESSAGE_3">Aquí puede tener otro mensaje de texto diferente (3).</string>
+
+
+      <string name="GAME_HEADER">Escena del jueco</string>
+      <string name="GAME_MESSAGE">Esto es como un texto dentro del juego.</string>
+ 
+    
+  </Espanol>
+  
+</languages>
