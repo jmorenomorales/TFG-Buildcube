@@ -9,8 +9,10 @@ public class MenuScene : MonoBehaviour
     public GameObject blockPrefab;
     public GameObject previewContainer;
     public Text previewNameText;
+    public Button[] levelSelectButtons;
+    public Sprite[] levelSelectSprites;
 
-    private int saveCounter, previewIndex;
+    private int saveCounter, previewIndex, availableLevels;
     private string language, previewName;
     private string gridtype = "0";
     private float gridtypeFloat;
@@ -24,8 +26,11 @@ public class MenuScene : MonoBehaviour
     private void Start()
     {
         language = PlayerPrefs.GetString("LANGUAGE");
+        PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
+        availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
 
         GetAnimators();
+        ChangeLevelSelectIcons();
         
         saveCounter = 0;
         previewIndex = 0;
@@ -194,14 +199,26 @@ public class MenuScene : MonoBehaviour
     {
         gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
         gridSelectAnimator.SetBool("IsGridSelectLeft", true);
+
+        PlayerPrefs.SetString("GAMEMODE", "FREE");
+    }
+
+    public void OnPixelArtClick()
+    {
+        gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
+        gridSelectAnimator.SetBool("IsGridSelectLeft", true);
+
+        PlayerPrefs.SetString("GAMEMODE", "PIXELART");
     }
 
     public void OnChallengeClick()
     {
         gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
         levelSelectAnimator.SetBool("IsLevelSelectLR", true);
-    }
 
+        PlayerPrefs.SetString("GAMEMODE", "CHALLENGE");
+    }
+    
     public void OnBackGameModeClick()
     {
         mainMenuAnimator.SetBool("GoLeftMM", false);
@@ -328,4 +345,24 @@ public class MenuScene : MonoBehaviour
         }
     }
 
+    private void ChangeLevelSelectIcons()
+    {
+        for(int i=0; i< availableLevels; i++)
+        {
+            levelSelectButtons[i].image.sprite = levelSelectSprites[i];
+        }
+    }
+
+    public void OnLevelSelection(int levelNum)
+    {
+        if (levelNum < availableLevels)
+        {
+            // Cargamos el nivel seleccionado
+            Debug.Log("CARGANDO NIVEL");
+        }
+        else
+        {
+            Debug.Log("AÚN NO TIENES ACCESO A ESTE NIVEL");
+        }
+    }
 }

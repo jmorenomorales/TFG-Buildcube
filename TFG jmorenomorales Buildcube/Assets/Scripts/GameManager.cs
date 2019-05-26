@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
 
     private Stack<BlockAction> playerActions;
     private BlockAction playerAction;
+    private string gameMode;
 
     private void Start()
     {
@@ -91,16 +92,25 @@ public class GameManager : MonoBehaviour
 
         playerActions = new Stack<BlockAction>();
 
-        GridSettings(PlayerPrefs.GetInt("GRIDTYPE"));
-        foundationObject.GetComponent<Renderer>().material = gridMaterials[PlayerPrefs.GetInt("GRIDTYPE")];
+        gameMode = PlayerPrefs.GetString("GAMEMODE");
+        Debug.Log(gameMode);
 
+        if(gameMode.Equals("FREE") || gameMode.Equals("PIXELART"))
+        {
+            GridSettings(PlayerPrefs.GetInt("GRIDTYPE"));
+            foundationObject.GetComponent<Renderer>().material = gridMaterials[PlayerPrefs.GetInt("GRIDTYPE")];
+        }
+        else
+        {
+            // CHALLENGE MODE
+        }
+        
         // Por defecto ponemos el color blanco
         selectedColor = BlockColor.White;
         colorButtons[0].image.sprite = colorButtonsSprites[1];
 
         // Por defecto el botón y el booleano estará desactivado
         isDeleting = false;
-        
     }
 
     private void Update()
@@ -346,19 +356,55 @@ public class GameManager : MonoBehaviour
             case 0: // 5x5
                 blockSize = 0.5f;
                 blockOffset = (Vector3.one * 0.5f) / 2;
-                blocks = new Block[5, 25, 5];
+                switch (gameMode)
+                {
+                    case "FREE":
+                        blocks = new Block[5, 25, 5];
+                        break;
+                    case "PIXELART":
+                        blocks = new Block[5, 1, 5];
+                        break;
+                    case "CHALLENGE":
+                        break;
+                    default:
+                        break;
+                }
                 foundationObject.GetComponent<Renderer>().material = gridMaterials[0];
                 break;
             case 1: // 10x10
                 blockSize = 0.25f;
                 blockOffset = (Vector3.one * 0.5f) / 4;
-                blocks = new Block[10, 50, 10];
+                switch (gameMode)
+                {
+                    case "FREE":
+                        blocks = new Block[10, 50, 10];
+                        break;
+                    case "PIXELART":
+                        blocks = new Block[10, 1, 10];
+                        break;
+                    case "CHALLENGE":
+                        break;
+                    default:
+                        break;
+                }
                 foundationObject.GetComponent<Renderer>().material = gridMaterials[1];
                 break;
             case 2: // 20x20
                 blockSize = 0.125f;
                 blockOffset = (Vector3.one * 0.5f) / 8;
-                blocks = new Block[20, 100, 200];
+                switch (gameMode)
+                {
+                    case "FREE":
+                        blocks = new Block[20, 100, 200];
+                        break;
+                    case "PIXELART":
+                        blocks = new Block[20, 1, 200];
+                        break;
+                    case "CHALLENGE":
+                        break;
+                    default:
+                        break;
+                }
                 foundationObject.GetComponent<Renderer>().material = gridMaterials[2];
                 break;
             default:
