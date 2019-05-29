@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     private Stack<BlockAction> playerActions;
     private BlockAction playerAction;
-    private string gameMode;
+    private string gameMode, gridTypeLoadedMap;
 
     private void Start()
     {
@@ -95,7 +95,45 @@ public class GameManager : MonoBehaviour
         gameMode = PlayerPrefs.GetString("GAMEMODE");
         Debug.Log(gameMode);
 
-        if(gameMode.Equals("FREE") || gameMode.Equals("PIXELART"))
+
+        // Carga del mapa
+        if (!PlayerPrefs.GetString("MAP_ID").Equals("NONE"))
+        {
+            int key = int.Parse(PlayerPrefs.GetString("MAP_ID"));
+
+            string data = PlayerPrefs.GetString(key.ToString());
+            string[] blockData = data.Split('%');
+            
+            gameMode = "LOADEDMAP";
+
+            switch (blockData[blockData.Length - 2])
+            {
+                case "5":
+                    GridSettings(0);
+                    break;
+                case "10":
+                    GridSettings(1);
+                    break;
+                case "20":
+                    GridSettings(2);
+                    break;
+            }
+
+            for (int i = 1; i < blockData.Length - 2; i++)
+            {
+                string[] currentBlock = blockData[i].Split('|');
+                int x = int.Parse(currentBlock[0]);
+                int y = int.Parse(currentBlock[1]);
+                int z = int.Parse(currentBlock[2]);
+
+                int c = int.Parse(currentBlock[3]);
+
+                Block b = new Block() { color = (BlockColor)c };
+
+                CreateBlock(x,y,z,b);
+            }
+        }
+        else if (gameMode.Equals("FREE") || gameMode.Equals("PIXELART"))
         {
             GridSettings(PlayerPrefs.GetInt("GRIDTYPE"));
             foundationObject.GetComponent<Renderer>().material = gridMaterials[PlayerPrefs.GetInt("GRIDTYPE")];
@@ -117,7 +155,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() /*EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)*/)
+            if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                 return;
 
             RaycastHit hit;
@@ -366,6 +404,9 @@ public class GameManager : MonoBehaviour
                         break;
                     case "CHALLENGE":
                         break;
+                    case "LOADEDMAP":
+                        blocks = new Block[5, 25, 5];
+                        break;
                     default:
                         break;
                 }
@@ -384,6 +425,9 @@ public class GameManager : MonoBehaviour
                         break;
                     case "CHALLENGE":
                         break;
+                    case "LOADEDMAP":
+                        blocks = new Block[10, 50, 10];
+                        break;
                     default:
                         break;
                 }
@@ -401,6 +445,9 @@ public class GameManager : MonoBehaviour
                         blocks = new Block[20, 1, 200];
                         break;
                     case "CHALLENGE":
+                        break;
+                    case "LOADEDMAP":
+                        blocks = new Block[20, 100, 200];
                         break;
                     default:
                         break;

@@ -26,7 +26,7 @@ public class MenuScene : MonoBehaviour
     private void Start()
     {
         language = PlayerPrefs.GetString("LANGUAGE");
-        PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
+        //PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
 
         GetAnimators();
@@ -242,6 +242,7 @@ public class MenuScene : MonoBehaviour
     public void OnPlayClick(int gridnum)
     {
         PlayerPrefs.SetInt("GRIDTYPE", gridnum);
+        PlayerPrefs.SetString("MAP_ID", "NONE");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
@@ -358,11 +359,19 @@ public class MenuScene : MonoBehaviour
         if (levelNum < availableLevels)
         {
             // Cargamos el nivel seleccionado
+            PlayerPrefs.SetString("MAPNAME", "EMPTY");
             Debug.Log("CARGANDO NIVEL");
         }
         else
         {
             Debug.Log("AÚN NO TIENES ACCESO A ESTE NIVEL");
         }
+    }
+
+    public void OnTextPreviewClick()
+    {
+        PlayerPrefs.SetString("MAP_ID", previewIndex.ToString());
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        Debug.Log("He pinchado sobre el texto");
     }
 }
