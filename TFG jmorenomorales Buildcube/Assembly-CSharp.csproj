@@ -249,13 +249,6 @@
     <Compile Include="Assets\TouchScript\Scripts\Utils\PointerUtils.cs" />
     <Compile Include="Assets\TouchScript\Scripts\Utils\TimedSequence.cs" />
     <Compile Include="Assets\TouchScript\Scripts\Utils\TransformUtils.cs" />
-    <Compile Include="Assets\XML Multi-Language System\LoadLevel.cs" />
-    <Compile Include="Assets\XML Multi-Language System\Scripts\FlagSelectLanguage.cs" />
-    <Compile Include="Assets\XML Multi-Language System\Scripts\LanguageManager.cs" />
-    <Compile Include="Assets\XML Multi-Language System\Scripts\LanguageReader.cs" />
-    <Compile Include="Assets\XML Multi-Language System\Scripts\Message.cs" />
-    <Compile Include="Assets\XML Multi-Language System\Scripts\TranslatedDropdownOption.cs" />
-    <Compile Include="Assets\XML Multi-Language System\Scripts\TranslatedText.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
     <None Include="Assets\SamplesResources\SceneAssets\VirtualButtons\Shaders\Gradient.shader" />
     <None Include="Assets\TouchScript\Shaders\DebugDepthTest.shader" />
@@ -265,7 +258,6 @@
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_ModelTarget.xml" />
     <None Include="Assets\SamplesResources\SceneAssets\ModelTargetsTrained\Shaders\TimedDiffuseNoCull.shader" />
     <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
-    <None Include="Assets\XML Multi-Language System\Lang\ENG.xml" />
     <None Include="Assets\Vuforia\Shaders\VideoBackground.shader" />
     <None Include="Assets\Vuforia\Shaders\OutlineOpaque.shader" />
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMPro_Properties.cginc" />
@@ -297,9 +289,7 @@
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Vuforia\Shaders\DepthContour.shader" />
-    <None Include="Assets\XML Multi-Language System\Lang\ITA.xml" />
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\XML Multi-Language System\Lang\ESP.xml" />
     <None Include="Assets\TouchScript\Examples\_misc\Shaders\BorderDiffuse.shader" />
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMP_Sprite.shader" />

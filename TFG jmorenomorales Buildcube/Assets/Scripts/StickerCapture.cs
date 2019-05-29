@@ -97,7 +97,7 @@ public class StickerCapture : MonoBehaviour
     {
 #if UNITY_ANDROID
         if (!isProcessing)
-                {
+        {
             StartCoroutine(ShareScreenshotInAnroid());
         }
 #else
@@ -128,11 +128,11 @@ public class StickerCapture : MonoBehaviour
             AndroidJavaClass intentClass = new AndroidJavaClass("android.content.Intent");
             AndroidJavaObject intentObject = new AndroidJavaObject("android.content.Intent");
             intentObject.Call<AndroidJavaObject>("setAction", intentClass.GetStatic<string>("ACTION_SEND"));
-            
+
             //create image URI to add it to the intent
             AndroidJavaClass uriClass = new AndroidJavaClass("android.net.Uri");
             AndroidJavaObject uriObject = uriClass.CallStatic<AndroidJavaObject>("parse", "file://" + screenShotPath);
-            
+
             //put image and string extra
             intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"), uriObject);
             intentObject.Call<AndroidJavaObject>("setType", "image/png");
