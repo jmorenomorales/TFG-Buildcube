@@ -215,8 +215,6 @@ public class MenuScene : MonoBehaviour
     {
         gameModeSelectAnimator.SetBool("GoMoreLeft", !gameModeSelectAnimator.GetBool("GoMoreLeft"));
         levelSelectAnimator.SetBool("IsLevelSelectLR", true);
-
-        PlayerPrefs.SetString("GAMEMODE", "CHALLENGE");
     }
     
     public void OnBackGameModeClick()
@@ -359,8 +357,9 @@ public class MenuScene : MonoBehaviour
         if (levelNum < availableLevels)
         {
             // Cargamos el nivel seleccionado
-            PlayerPrefs.SetString("MAPNAME", "EMPTY");
-            Debug.Log("CARGANDO NIVEL");
+            PlayerPrefs.SetInt("SELECTEDLEVEL", levelNum+1);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Challenge");
+
         }
         else
         {

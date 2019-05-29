@@ -125,6 +125,7 @@
     <Compile Include="Assets\SamplesResources\SceneAssets\VuMarks\Scripts\VuMarkHandler.cs" />
     <Compile Include="Assets\SamplesResources\SceneAssets\VuMarks\Scripts\VuMarkTrackableEventHandler.cs" />
     <Compile Include="Assets\Scripts\CameraFocus.cs" />
+    <Compile Include="Assets\Scripts\ChallengeManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\MenuScene.cs" />
     <Compile Include="Assets\Scripts\SaveManager.cs" />

@@ -138,10 +138,6 @@ public class GameManager : MonoBehaviour
             GridSettings(PlayerPrefs.GetInt("GRIDTYPE"));
             foundationObject.GetComponent<Renderer>().material = gridMaterials[PlayerPrefs.GetInt("GRIDTYPE")];
         }
-        else
-        {
-            // CHALLENGE MODE
-        }
         
         // Por defecto ponemos el color blanco
         selectedColor = BlockColor.White;
@@ -155,7 +151,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            if (EventSystem.current.IsPointerOverGameObject() /*EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)*/)
                 return;
 
             RaycastHit hit;
@@ -402,8 +398,6 @@ public class GameManager : MonoBehaviour
                     case "PIXELART":
                         blocks = new Block[5, 1, 5];
                         break;
-                    case "CHALLENGE":
-                        break;
                     case "LOADEDMAP":
                         blocks = new Block[5, 25, 5];
                         break;
@@ -423,8 +417,6 @@ public class GameManager : MonoBehaviour
                     case "PIXELART":
                         blocks = new Block[10, 1, 10];
                         break;
-                    case "CHALLENGE":
-                        break;
                     case "LOADEDMAP":
                         blocks = new Block[10, 50, 10];
                         break;
@@ -443,8 +435,6 @@ public class GameManager : MonoBehaviour
                         break;
                     case "PIXELART":
                         blocks = new Block[20, 1, 200];
-                        break;
-                    case "CHALLENGE":
                         break;
                     case "LOADEDMAP":
                         blocks = new Block[20, 100, 200];

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Game.unity
     guid: 7b927b6e073ac7c45a07f705d3ce340b
+  - enabled: 1
+    path: Assets/_Scenes/Challenge.unity
+    guid: 910730d314bff734e9c1af00fa60ff6d
   m_configObjects: {}
