@@ -189,6 +189,8 @@ public class GameManager : MonoBehaviour
                     , y = (int)index.y
                     , z = (int)index.z;
 
+                Debug.Log(x + ", " + y + ", " + z);
+
                 // Si no hay un bloque en esa posicion del plano
                 if (blocks[x, y, z] == null)
                 {
@@ -431,13 +433,13 @@ public class GameManager : MonoBehaviour
                 switch (gameMode)
                 {
                     case "FREE":
-                        blocks = new Block[20, 100, 200];
+                        blocks = new Block[20, 100, 20];
                         break;
                     case "PIXELART":
-                        blocks = new Block[20, 1, 200];
+                        blocks = new Block[20, 1, 20];
                         break;
                     case "LOADEDMAP":
-                        blocks = new Block[20, 100, 200];
+                        blocks = new Block[20, 100, 20];
                         break;
                     default:
                         break;

@@ -4,6 +4,7 @@ D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/A
 SceneListBegin?
 Assets/_Scenes/Menu.unity
 Assets/_Scenes/Game.unity
+Assets/_Scenes/Challenge.unity
 SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.UI.TextureSwitch
 749b830db8111a31e0ed084fddde527e Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.PenCursor
@@ -156,6 +157,7 @@ f0d3f224f26bb77a597389d192d3a558 Assembly-CSharp.dll:TouchScript.Examples.Portal
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.TapHandler
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Examples.Checkers.Board
 be5b366a1b22848ac4fd6e413e90203a Assembly-CSharp.dll:.CloudTrackableEventHandler
+57d4e8bf8afe5c4bac1c7a91274e7ae1 Assembly-CSharp.dll:.ChallengeManager
 d3b9b7f1ce9fbddd70161acead765871 Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.UI.GradientTexture
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 6313f57348386e2fdef13ef6f31d3acc Assembly-CSharp.dll:.AsyncSceneLoader

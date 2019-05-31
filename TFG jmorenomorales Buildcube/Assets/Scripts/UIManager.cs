@@ -91,7 +91,6 @@ public class UIManager : MonoBehaviour
                 {
                     colorButton.image.sprite = colorSel;
                     //eraseButton.image.sprite = eraseDes;
-                    saveButton.image.sprite = saveDes;
                 }
                 break;
             case 3:

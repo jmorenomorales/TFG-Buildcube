@@ -78,7 +78,7 @@ public class MenuScene : MonoBehaviour
             else
             {
                 if (Mathf.Abs(delta.x) > 2.5f)
-                {
+                {/*
                     if (delta.x < 0)
                     {
                         mainMenuAnimator.SetBool("GoLeftMM", true);
@@ -92,7 +92,7 @@ public class MenuScene : MonoBehaviour
                         gameModeSelectAnimator.SetBool("GoLeftGM", false);
                         UI.SetActive(true);
                         previewContainer.SetActive(true);
-                    }
+                    }*/
                 }
             }
         }
@@ -357,7 +357,7 @@ public class MenuScene : MonoBehaviour
         if (levelNum < availableLevels)
         {
             // Cargamos el nivel seleccionado
-            PlayerPrefs.SetInt("SELECTEDLEVEL", levelNum+1);
+            PlayerPrefs.SetInt("SELECTEDLEVEL", levelNum);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Challenge");
 
         }
@@ -365,6 +365,8 @@ public class MenuScene : MonoBehaviour
         {
             Debug.Log("AÚN NO TIENES ACCESO A ESTE NIVEL");
         }
+
+        Debug.Log("Pues nada, que el nivel es: " + PlayerPrefs.GetInt("SELECTEDLEVEL"));
     }
 
     public void OnTextPreviewClick()
