@@ -26,7 +26,7 @@ public class MenuScene : MonoBehaviour
     private void Start()
     {
         language = PlayerPrefs.GetString("LANGUAGE");
-        //PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
+        PlayerPrefs.SetInt("AVAILABLELEVELS", 9);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
 
         GetAnimators();
