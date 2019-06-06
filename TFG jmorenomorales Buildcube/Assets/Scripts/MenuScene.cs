@@ -25,8 +25,9 @@ public class MenuScene : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         language = PlayerPrefs.GetString("LANGUAGE");
-        PlayerPrefs.SetInt("AVAILABLELEVELS", 9);
+        PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
 
         GetAnimators();
@@ -61,6 +62,7 @@ public class MenuScene : MonoBehaviour
             isSwipingContainer = false;
         }
 
+        /*
         if(Input.GetMouseButtonUp(0))
         {
             Vector3 delta = Input.mousePosition - startClick;
@@ -92,13 +94,13 @@ public class MenuScene : MonoBehaviour
                         gameModeSelectAnimator.SetBool("GoLeftGM", false);
                         UI.SetActive(true);
                         previewContainer.SetActive(true);
-                    }*/
+                    }
                 }
             }
-        }
+        }*/
     }
 
-    private void Swipe(bool left)
+    public void Swipe(bool left)
     {
         if(left)
         {
@@ -299,9 +301,10 @@ public class MenuScene : MonoBehaviour
                 // Settings Menu
                 settingsMenu.GetComponentsInChildren<Text>()[0].text = "AJUSTES";
                 settingsMenu.GetComponentsInChildren<Text>()[1].text = "IDIOMA";
-                settingsMenu.GetComponentsInChildren<Text>()[4].text = "VOLUMEN GENERAL";
+                settingsMenu.GetComponentsInChildren<Text>()[2].text = "QR PERSONALIZADO";
+                settingsMenu.GetComponentsInChildren<Text>()[3].text = "DESARROLLADOR";
 
-                settingsMenu.GetComponentsInChildren<Button>()[2].GetComponentInChildren<Text>().text = "VOLVER";
+                settingsMenu.GetComponentsInChildren<Button>()[3].GetComponentInChildren<Text>().text = "VOLVER";
 
                 // Gamemode Menu
                 gameModeSelect.GetComponentInChildren<Text>().text = "ELIGE EL MODO DE JUEGO";
@@ -321,9 +324,10 @@ public class MenuScene : MonoBehaviour
                 // Settings Menu
                 settingsMenu.GetComponentsInChildren<Text>()[0].text = "SETTINGS";
                 settingsMenu.GetComponentsInChildren<Text>()[1].text = "LANGUAGE";
-                settingsMenu.GetComponentsInChildren<Text>()[4].text = "MASTER VOLUME";
+                settingsMenu.GetComponentsInChildren<Text>()[2].text = "CUSTOM QR";
+                settingsMenu.GetComponentsInChildren<Text>()[3].text = "DEVELOPER";
 
-                settingsMenu.GetComponentsInChildren<Button>()[2].GetComponentInChildren<Text>().text = "BACK";
+                settingsMenu.GetComponentsInChildren<Button>()[3].GetComponentInChildren<Text>().text = "BACK";
 
                 // Gamemode Menu
                 gameModeSelect.GetComponentInChildren<Text>().text = "CHOOSE GAMEMODE";
@@ -374,5 +378,18 @@ public class MenuScene : MonoBehaviour
         PlayerPrefs.SetString("MAP_ID", previewIndex.ToString());
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
         Debug.Log("He pinchado sobre el texto");
+    }
+
+    public void OnDeveloperButtonClick(int whatUrl)
+    {
+        switch (whatUrl)
+        {
+            case 0:
+                Application.OpenURL("https://twitter.com/kokebr_");
+                break;
+            case 1:
+                Application.OpenURL("https://github.com/jmorenomorales");
+                break;
+        }
     }
 }

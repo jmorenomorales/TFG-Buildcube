@@ -137,7 +137,7 @@ public class ChallengeManager : MonoBehaviour
             }
         }
 
-        Debug.Log(currentMap);
+        //Debug.Log(currentMap);
     }
 
     public void ToogleHintMenu()
@@ -248,21 +248,37 @@ public class ChallengeManager : MonoBehaviour
             isCorrect();
 
             currentMap = null;
+
+            if (Input.GetKeyDown("space"))
+            {
+                isCorrectBool = true;
+            }
         }
         else if (isCorrectBool)
         {
             // Lo ha resuelto
             currentMap = null;
-            PlayerPrefs.SetInt("SELECTEDLEVEL", selectedLevel+1);
-            PlayerPrefs.SetInt("AVAILABLELEVELS", PlayerPrefs.GetInt("AVAILABLELEVELS")+1);
-            Debug.Log("El siguiente nivel es " + PlayerPrefs.GetInt("SELECTEDLEVEL"));
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Challenge");
+
+            if(PlayerPrefs.GetInt("SELECTEDLEVEL") < 8)
+            {
+                PlayerPrefs.SetInt("SELECTEDLEVEL", selectedLevel + 1);
+
+                if (PlayerPrefs.GetInt("SELECTEDLEVEL") == PlayerPrefs.GetInt("AVAILABLELEVELS"))
+                {
+                    PlayerPrefs.SetInt("AVAILABLELEVELS", PlayerPrefs.GetInt("AVAILABLELEVELS") + 1);
+                }
+
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Challenge");
+            }
+            else
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+            }
         }
         else
         {
             // No hay tiempo
             currentMap = null;
-
         }
 
     }
@@ -271,12 +287,10 @@ public class ChallengeManager : MonoBehaviour
         if (currentMap == maps[selectedLevel])
         {
             isCorrectBool = true;
-            Debug.Log("SIIIIIIIIIIIII");
         }
         else
         {
             isCorrectBool = false;
-            Debug.Log("NOOOOOOOOOO");
         }
     }
     
