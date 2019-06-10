@@ -1,7 +1,13 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using TouchScript.Hit;
+using TouchScript.Pointers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Pointer = TouchScript.Pointers.Pointer;
+using UnityEngine.Profiling;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,11 +26,24 @@ public class UIManager : MonoBehaviour
     private Animator togglePhotoModeAnimator;
     private Button togglePhotoModeButton;
 
+    public static UIManager Instance { set; get; }
+
     private void Start()
     {
+        Instance = this;
         togglePhotoModeOn = false;
         togglePhotoModeAnimator = GameObject.Find("PhotoMode").GetComponent<Animator>();
         togglePhotoModeButton = GameObject.Find("PhotoMode").GetComponentInChildren<Button>();
+
+        togglePictureMode.onValueChanged.AddListener(delegate { ToggleQRValueChanged(togglePictureMode); });
+    }
+
+    private void ToggleQRValueChanged(Toggle togglePictureMode)
+    {
+        if (togglePictureMode.isOn)
+            foundation.SetActive(true);
+        else
+            foundation.SetActive(false);
     }
 
     public void CloseSettingsPanel()
@@ -32,8 +51,19 @@ public class UIManager : MonoBehaviour
         settingsPanel.SetActive(false);
     }
     
+    public void setTogglePhotoModeBool(bool mode)
+    {
+        togglePhotoModeOn = mode;
+    }
+
     public void TogglePhotoMode()
     {
+        if (GameObject.Find("EventSystem").GetComponent("TouchScriptInputModule"))
+        {
+            GameObject ts = GameObject.Find("EventSystem");
+            Destroy(ts.GetComponent("TouchScriptInputModule"));
+        }
+
         if (!togglePhotoModeOn) // Modo foto cerrado
         {
             if (PlayerPrefs.GetInt("ISUSINGQR") == 1)    // Usa custom QR

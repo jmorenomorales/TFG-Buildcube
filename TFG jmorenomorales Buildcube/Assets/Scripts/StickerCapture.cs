@@ -11,6 +11,8 @@ public class StickerCapture : MonoBehaviour
     public GameObject camera, worldSpacePlane;
     public RawImage rawImage;
     public RectTransform touchPanel;
+    public GameObject togglePhotoMode;
+    public Sprite togglePhotoModeOff;
 
     private RectTransform helper;
 
@@ -18,11 +20,14 @@ public class StickerCapture : MonoBehaviour
     private string shareSubject, shareMessage;
     private bool isProcessing = false;
     private string screenshotName;
+    private Animator togglePhotoModeAnim;
+    UIManager uiManager;
 
     private bool cameraMode = false;
 
     private void Start()
     {
+        togglePhotoModeAnim = togglePhotoMode.GetComponent<Animator>();
         camera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
         CreateDirectory();
     }
@@ -53,6 +58,12 @@ public class StickerCapture : MonoBehaviour
         camera.SetActive(true);
         yield return new WaitForEndOfFrame();
         camera.SetActive(false);
+        UIManager.Instance.setTogglePhotoModeBool(false);
+        if (PlayerPrefs.GetInt("ISUSINGQR") == 1)    // Usa custom QR
+            togglePhotoModeAnim.SetBool("PhotoModeOnQR", false);
+        else
+            togglePhotoModeAnim.SetBool("PhotoModeOnNoQR", false);
+        togglePhotoMode.GetComponentInChildren<Button>().image.sprite = togglePhotoModeOff;
         yield return null;
     }
 
@@ -89,7 +100,6 @@ public class StickerCapture : MonoBehaviour
 
         string screenShotPath = Application.persistentDataPath + "/" + screenshotName;
         GameObject.Find("NewGUI").GetComponent<Canvas>().enabled = false;
-        GameObject.Find("BackgroundCanvas").GetComponent<Canvas>().enabled = false;
         yield return new WaitForEndOfFrame();
         ScreenCapture.CaptureScreenshot(screenshotName, 1);
         yield return new WaitForSeconds(0.5f);

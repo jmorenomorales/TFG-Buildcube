@@ -102,7 +102,7 @@ c51a177b713fd3c62f277dee2c5584d4 Assembly-CSharp.dll:.MenuScene
 36eec4ad2adffcd8a4600a5022430ca3 Assembly-CSharp.dll:TouchScript.Examples.Colors.Colors
 b3099a127ad5cca97853e42ed4e6b984 Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.ObjectCursor
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Examples.Multiuser.Logo
-8fb411fc42091fa9dc5f3e0b02ee8d0e Assembly-CSharp.dll:.StickerCapture
+f9eda42a5ccf1c499809c9a299907f12 Assembly-CSharp.dll:.StickerCapture
 2336f624780bef9a6315df054cbe36c0 Assembly-CSharp.dll:.Highlight
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -254,7 +254,7 @@ d26d3668ad33acfeca5a4c6c66e50e15 Assembly-CSharp.dll:.MultiTargetTrackableEventH
 c312fcfdc704c07bde804c0cf8b879eb Assembly-CSharp.dll:.MenuAnimator
 7fd8460367bbe26514fbbe53fe439359 Assembly-CSharp.dll:.TrackedStateManager
 e6adc51130be2d8a1774d55b2afd6bbd Assembly-CSharp.dll:TouchScript.Gestures.PressGesture
-9c464eda6ff24199e1302e65c72836ea Assembly-CSharp.dll:.UIManager
+90aa703283ec9f10ad750ad561e6e8a6 Assembly-CSharp.dll:.UIManager
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 02e06d357617a58ca366c3407b971851 Assembly-CSharp.dll:TouchScript.Gestures.MetaGesture
 34d15a5f28652fc061f6a154086ecbf5 Assembly-CSharp.dll:.NavigationHandler
