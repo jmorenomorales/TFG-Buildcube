@@ -22,6 +22,7 @@ public class MenuScene : MonoBehaviour
     
     public GameObject mainMenu, gameModeSelect, gridSelect, levelSelect, settingsMenu, UI;
     private Animator mainMenuAnimator, gameModeSelectAnimator, gridSelectAnimator, levelSelectAnimator, settingsMenuAnimator;
+    public Toggle qRToggle;
 
     private void Start()
     {
@@ -29,6 +30,13 @@ public class MenuScene : MonoBehaviour
         language = PlayerPrefs.GetString("LANGUAGE");
         PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
+        
+        qRToggle.onValueChanged.AddListener(delegate { ToggleQRValueChanged(qRToggle); });
+
+        if (PlayerPrefs.GetInt("ISUSINGQR") == 1)
+            qRToggle.isOn = true;
+        else
+            qRToggle.isOn = false;
 
         GetAnimators();
         ChangeLevelSelectIcons();
@@ -98,6 +106,14 @@ public class MenuScene : MonoBehaviour
                 }
             }
         }*/
+    }
+
+    private void ToggleQRValueChanged(Toggle qRToggle)
+    {
+        if (qRToggle.isOn)
+            PlayerPrefs.SetInt("ISUSINGQR", 1);
+        else
+            PlayerPrefs.SetInt("ISUSINGQR", 0);
     }
 
     public void Swipe(bool left)

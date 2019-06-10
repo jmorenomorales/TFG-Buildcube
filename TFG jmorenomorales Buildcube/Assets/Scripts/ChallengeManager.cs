@@ -117,7 +117,7 @@ public class ChallengeManager : MonoBehaviour
         }
     }
 
-    private void blockChallengeToString()
+    private void BlockChallengeToString()
     {
         for (int i = 0; i < blocksChallenge.GetLength(0); i++)
         {
@@ -154,7 +154,7 @@ public class ChallengeManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (EventSystem.current.IsPointerOverGameObject() /*EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)*/)
+                if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                     return;
 
                 RaycastHit hit;
@@ -242,7 +242,7 @@ public class ChallengeManager : MonoBehaviour
             }
 
             // Método de rellenar el string currentMap
-            blockChallengeToString();
+            BlockChallengeToString();
 
             // Método de si es correcto
             isCorrect();

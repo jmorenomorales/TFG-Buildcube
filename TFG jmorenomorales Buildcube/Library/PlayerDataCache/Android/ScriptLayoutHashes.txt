@@ -98,7 +98,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-2cdf9aa1576bd469e8b8caf8028b6ea5 Assembly-CSharp.dll:.MenuScene
+c51a177b713fd3c62f277dee2c5584d4 Assembly-CSharp.dll:.MenuScene
 36eec4ad2adffcd8a4600a5022430ca3 Assembly-CSharp.dll:TouchScript.Examples.Colors.Colors
 b3099a127ad5cca97853e42ed4e6b984 Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.ObjectCursor
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Examples.Multiuser.Logo
@@ -254,7 +254,7 @@ d26d3668ad33acfeca5a4c6c66e50e15 Assembly-CSharp.dll:.MultiTargetTrackableEventH
 c312fcfdc704c07bde804c0cf8b879eb Assembly-CSharp.dll:.MenuAnimator
 7fd8460367bbe26514fbbe53fe439359 Assembly-CSharp.dll:.TrackedStateManager
 e6adc51130be2d8a1774d55b2afd6bbd Assembly-CSharp.dll:TouchScript.Gestures.PressGesture
-88214c8be837c7168bbca2bb5e52a0aa Assembly-CSharp.dll:.UIManager
+9c464eda6ff24199e1302e65c72836ea Assembly-CSharp.dll:.UIManager
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 02e06d357617a58ca366c3407b971851 Assembly-CSharp.dll:TouchScript.Gestures.MetaGesture
 34d15a5f28652fc061f6a154086ecbf5 Assembly-CSharp.dll:.NavigationHandler
@@ -319,7 +319,7 @@ bd93da66773be9182d84b7dc6c94e717 Assembly-CSharp.dll:.RockPileController
 dda75e95d915b27bdb9b30373c5818a6 Assembly-CSharp.dll:.TouchHandler
 bd4f1622718fab3b6669ae30d89f1f82 Assembly-CSharp.dll:.AstronautStateMachineBehaviour
 dff7a11839abb9fb7222280cf3c0a95a VuforiaScripts.dll:.DefaultModelRecoEventHandler
-bc4f36499b99db065b113b82461d23dd Assembly-CSharp.dll:.SaveManager
+1e2eb734683a232e960a1f26d393118e Assembly-CSharp.dll:.SaveManager
 9870d07becb995371db036f64345cf30 Assembly-CSharp.dll:.FrameQualityMeter
 13d0b808f4abc62877f71e012710d04a Assembly-CSharp.dll:.ModelTargetAugmentationHandler
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI

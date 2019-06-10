@@ -10,90 +10,74 @@ public class UIManager : MonoBehaviour
     public Sprite eraseDes, eraseSel, saveDes, saveSel, colorDes, colorSel;
     public Button eraseButton, saveButton, colorButton;
     public GameObject colorPanel, savePanel, foundation;
-    public Toggle togglePictureModeENG, togglePictureModeESP;
+    public Toggle togglePictureMode;
+    public Sprite photoModeOn, photoModeOff;
+    public GameObject settingsPanel;
 
-    private bool menuAnimating;
-    private bool areMenusShowing;
+    private bool menuAnimating, areMenusShowing, togglePhotoModeOn;
     private float menuAnimationTransition;
     private float animationDuration = 0.2f;
+    private Animator togglePhotoModeAnimator;
+    private Button togglePhotoModeButton;
 
-
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            OnTheOneButtonClick();
+        togglePhotoModeOn = false;
+        togglePhotoModeAnimator = GameObject.Find("PhotoMode").GetComponent<Animator>();
+        togglePhotoModeButton = GameObject.Find("PhotoMode").GetComponentInChildren<Button>();
+    }
 
-        if (menuAnimating)
+    public void CloseSettingsPanel()
+    {
+        settingsPanel.SetActive(false);
+    }
+    
+    public void TogglePhotoMode()
+    {
+        if (!togglePhotoModeOn) // Modo foto cerrado
         {
-            if (areMenusShowing)
+            if (PlayerPrefs.GetInt("ISUSINGQR") == 1)    // Usa custom QR
             {
-                menuAnimationTransition += Time.deltaTime * (1 - animationDuration);
-                if (menuAnimationTransition >= 1)
-                {
-                    menuAnimationTransition = 1;
-                    menuAnimating = false;
-                }
+                togglePhotoModeAnimator.SetBool("PhotoModeOnQR", true);
             }
             else
             {
-                menuAnimationTransition -= Time.deltaTime * (1 - animationDuration);
-                if (menuAnimationTransition <= 0)
-                {
-                    menuAnimationTransition = 0;
-                    menuAnimating = false;
-                }
+                togglePhotoModeAnimator.SetBool("PhotoModeOnNoQR", true);
             }
 
-            //colorMenu.anchoredPosition = Vector2.Lerp(new Vector2(0, 1000), new Vector2(0, -250), menuAnimationTransition);
-            //actionMenu.anchoredPosition = Vector2.Lerp(new Vector2(-750,0), new Vector2(250, 0), menuAnimationTransition);
+            togglePhotoModeOn = true;
+            togglePhotoModeButton.image.sprite = photoModeOn;
+        }
+        else // Modo foto abierto
+        {
+            if (PlayerPrefs.GetInt("ISUSINGQR") == 1)    // Usa custom QR
+            {
+                togglePhotoModeAnimator.SetBool("PhotoModeOnQR", false);
+            }
+            else
+            {
+                togglePhotoModeAnimator.SetBool("PhotoModeOnNoQR", false);
+            }
+            
+            togglePhotoModeOn = false;
+            togglePhotoModeButton.image.sprite = photoModeOff;
         }
     }
-
-    public void OnTheOneButtonClick()
-    {
-        areMenusShowing = !areMenusShowing;
-        PlayMenuAnimation();
-    }
-
-    private void PlayMenuAnimation()
-    {
-        menuAnimating = true;
-    }
-
+    
     public void ChangeImage(int buttonType)
     {
         switch (buttonType)
         {
             case 0: // Erase
-                /*if (eraseButton.image.sprite == eraseSel)
-                    eraseButton.image.sprite = eraseDes;
-                else
-                {
-                    eraseButton.image.sprite = eraseSel;
-                    saveButton.image.sprite = saveDes;
-                    colorButton.image.sprite = colorDes;
-                }*/
+                eraseButton.image.sprite = eraseSel;
+                colorButton.image.sprite = colorDes;
                 break;
-            case 1: // Save
-                if (saveButton.image.sprite == saveSel)
-                    saveButton.image.sprite = saveDes;
-                else
+            case 1: // Color
+                if(colorButton.image.sprite != colorSel)
                 {
-                    saveButton.image.sprite = saveSel;
                     eraseButton.image.sprite = eraseDes;
-                    colorButton.image.sprite = colorDes;
-                }
-                break;
-            case 2: // Color
-                if (colorButton.image.sprite == colorSel)
-                    colorButton.image.sprite = colorDes;
-                else
-                {
                     colorButton.image.sprite = colorSel;
-                    //eraseButton.image.sprite = eraseDes;
                 }
-                break;
-            case 3:
                 break;
         }
     }
@@ -105,38 +89,25 @@ public class UIManager : MonoBehaviour
         else
         {
             colorPanel.SetActive(true);
-            savePanel.SetActive(false);
         }
-
     }
 
     public void onTogglePictureClick()
     {
-        if (PlayerPrefs.GetString("LANGUAGE") == "ENG")
+        if (togglePictureMode.isOn)
         {
-            if (togglePictureModeENG.isOn)
-            {
-                togglePictureModeESP.isOn = true;
-                foundation.SetActive(false);
-            }
-            else
-            {
-                togglePictureModeESP.isOn = false;
-                foundation.SetActive(true);
-            }
+            togglePictureMode.isOn = true;
+            foundation.SetActive(false);
         }
         else
         {
-            if (togglePictureModeESP.isOn)
-            {
-                togglePictureModeENG.isOn = true;
-                foundation.SetActive(false);
-            }
-            else
-            {
-                togglePictureModeENG.isOn = false;
-                foundation.SetActive(true);
-            }
+            togglePictureMode.isOn = false;
+            foundation.SetActive(true);
         }
+    }
+
+    public void OnMainMenuClick()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }
