@@ -145,6 +145,10 @@ public class SaveManager : MonoBehaviour
 
     public void OnSaveMenuClick()
     {
+        if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
+        {
+            GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = false;
+        }
         // Desactivamos el panel de color
         if (colorPanel.activeSelf)
             colorPanel.SetActive(false);
@@ -414,6 +418,11 @@ public class SaveManager : MonoBehaviour
 
     public void OnRefreshClick()
     {
+        if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
+        {
+            GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = false;
+        }
+
         confirmMenuRefresh.SetActive(true);
     }
 
@@ -461,6 +470,11 @@ public class SaveManager : MonoBehaviour
 
     public void OnSettingsClick()
     {
+        if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
+        {
+            GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = false;
+        }
+
         settingsMenu.SetActive(true);
         if (confirmSaveMenu.activeSelf)
         {

@@ -151,9 +151,13 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() /*EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)*/)
+            if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                 return;
 
+            if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
+            {
+                GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = true;
+            }
             RaycastHit hit;
             // Hacemos un Raycast desde la camara y el punto en la pantalla al mundo con 30m
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 30.0f))
@@ -319,6 +323,11 @@ public class GameManager : MonoBehaviour
     // Boton de borrar bloques
     public void ToggleDelete()
     {
+        if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
+        {
+            GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = false;
+        }
+
         if (colorPanel.activeSelf)
         {
             colorPanel.SetActive(false);
@@ -330,6 +339,11 @@ public class GameManager : MonoBehaviour
 
     public void Undo()
     {
+        if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
+        {
+            GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = false;
+        }
+
         if (colorPanel.activeSelf)
         {
             colorPanel.SetActive(false);

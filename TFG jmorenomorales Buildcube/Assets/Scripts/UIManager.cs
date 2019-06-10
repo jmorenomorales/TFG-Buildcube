@@ -58,10 +58,9 @@ public class UIManager : MonoBehaviour
 
     public void TogglePhotoMode()
     {
-        if (GameObject.Find("EventSystem").GetComponent("TouchScriptInputModule"))
+        if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
         {
-            GameObject ts = GameObject.Find("EventSystem");
-            Destroy(ts.GetComponent("TouchScriptInputModule"));
+            GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = false;
         }
 
         if (!togglePhotoModeOn) // Modo foto cerrado
@@ -114,6 +113,11 @@ public class UIManager : MonoBehaviour
 
     public void ColorPanel()
     {
+        if (GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>())
+        {
+            GameObject.Find("EventSystem").GetComponent<TouchScript.Layers.UI.TouchScriptInputModule>().enabled = false;
+        }
+
         if (colorPanel.activeSelf)
             colorPanel.SetActive(false);
         else
