@@ -1,9 +1,10 @@
 Android
 PlayerPath?
-D:/UNIVERSIDAD/_TFG/Nuevo comienzo - TFG jmorenomorales Buildcube Semana 11,12/Apk2.apk
+C:/Users/Jorge/Desktop/Cuantopesa.apk
 SceneListBegin?
 Assets/_Scenes/Menu.unity
-Assets/_Scenes/Game.unity
+Assets/_Scenes/GameDefault.unity
+Assets/_Scenes/GameCustomQR.unity
 Assets/_Scenes/Challenge.unity
 SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.UI.TextureSwitch

@@ -28,6 +28,7 @@ public class MenuScene : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         language = PlayerPrefs.GetString("LANGUAGE");
+        ChangeLanguage(language);
         PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
         
@@ -259,7 +260,10 @@ public class MenuScene : MonoBehaviour
     {
         PlayerPrefs.SetInt("GRIDTYPE", gridnum);
         PlayerPrefs.SetString("MAP_ID", "NONE");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+        if (PlayerPrefs.GetInt("ISUSINGQR") == 1)
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameCustomQR");
+        else
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameDefault");
     }
 
     public void OnPlayClick()
@@ -320,7 +324,7 @@ public class MenuScene : MonoBehaviour
                 settingsMenu.GetComponentsInChildren<Text>()[2].text = "QR PERSONALIZADO";
                 settingsMenu.GetComponentsInChildren<Text>()[3].text = "DESARROLLADOR";
 
-                settingsMenu.GetComponentsInChildren<Button>()[3].GetComponentInChildren<Text>().text = "VOLVER";
+                settingsMenu.GetComponentsInChildren<Button>()[4].GetComponentInChildren<Text>().text = "VOLVER";
 
                 // Gamemode Menu
                 gameModeSelect.GetComponentInChildren<Text>().text = "ELIGE EL MODO DE JUEGO";
@@ -343,7 +347,7 @@ public class MenuScene : MonoBehaviour
                 settingsMenu.GetComponentsInChildren<Text>()[2].text = "CUSTOM QR";
                 settingsMenu.GetComponentsInChildren<Text>()[3].text = "DEVELOPER";
 
-                settingsMenu.GetComponentsInChildren<Button>()[3].GetComponentInChildren<Text>().text = "BACK";
+                settingsMenu.GetComponentsInChildren<Button>()[4].GetComponentInChildren<Text>().text = "BACK";
 
                 // Gamemode Menu
                 gameModeSelect.GetComponentInChildren<Text>().text = "CHOOSE GAMEMODE";
@@ -392,8 +396,11 @@ public class MenuScene : MonoBehaviour
     public void OnTextPreviewClick()
     {
         PlayerPrefs.SetString("MAP_ID", previewIndex.ToString());
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
-        Debug.Log("He pinchado sobre el texto");
+        // Comprobamos si hay customQR o no
+        if(PlayerPrefs.GetInt("ISUSINGQR") == 1)
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameCustomQR");
+        else
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameDefault");
     }
 
     public void OnDeveloperButtonClick(int whatUrl)
