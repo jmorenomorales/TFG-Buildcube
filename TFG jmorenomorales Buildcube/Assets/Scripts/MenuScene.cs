@@ -29,7 +29,7 @@ public class MenuScene : MonoBehaviour
         Application.targetFrameRate = 60;
         language = PlayerPrefs.GetString("LANGUAGE");
         ChangeLanguage(language);
-        PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
+        //PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
         
         qRToggle.onValueChanged.AddListener(delegate { ToggleQRValueChanged(qRToggle); });

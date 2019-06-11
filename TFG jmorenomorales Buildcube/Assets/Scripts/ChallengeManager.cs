@@ -78,7 +78,6 @@ public class ChallengeManager : MonoBehaviour
         
         // Por defecto ponemos el color blanco
         selectedColor = BlockColor.White;
-        colorButtons[0].image.sprite = colorButtonsSprites[1];
 
         // Por defecto el botón y el booleano estará desactivado
         isDeleting = false;
@@ -239,25 +238,25 @@ public class ChallengeManager : MonoBehaviour
                         playerActions.Push(playerAction);
                     }
                 }
-            }
 
-            // Método de rellenar el string currentMap
-            BlockChallengeToString();
+                // Método de rellenar el string currentMap
+                BlockChallengeToString();
 
-            // Método de si es correcto
-            isCorrect();
+                // Método de si es correcto
+                isCorrect();
 
-            currentMap = null;
+                currentMap = null;
 
-            if (Input.GetKeyDown("space"))
-            {
-                isCorrectBool = true;
+                if (Input.GetKeyDown("space"))
+                {
+                    isCorrectBool = true;
+                }
             }
         }
-        else if (isCorrectBool)
+        if (isCorrectBool)
         {
+            isCorrectBool = false;
             // Lo ha resuelto
-            currentMap = null;
 
             if(PlayerPrefs.GetInt("SELECTEDLEVEL") < 8)
             {
@@ -267,30 +266,38 @@ public class ChallengeManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("AVAILABLELEVELS", PlayerPrefs.GetInt("AVAILABLELEVELS") + 1);
                 }
+                
+                playerActions = new Stack<BlockAction>();
+                selectedLevel = PlayerPrefs.GetInt("SELECTEDLEVEL");
 
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Challenge");
+                hintImage.sprite = levelHints[selectedLevel];
+                hintsPanel.SetActive(true);
+
+                currentMap = null;
+                ResetGrid();
+                ChangeGrid();
+
+                //UnityEngine.SceneManagement.SceneManager.LoadScene("Challenge");
             }
             else
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
             }
         }
-        else
+        /*
         {
             // No hay tiempo
             currentMap = null;
-        }
+        }*/
 
     }
     private void isCorrect()
     {
+        Debug.Log("Vamo a comprobarlo");
         if (currentMap == maps[selectedLevel])
         {
             isCorrectBool = true;
-        }
-        else
-        {
-            isCorrectBool = false;
+            Debug.Log("Ta chido");
         }
     }
     

@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Pointer = TouchScript.Pointers.Pointer;
 using UnityEngine.Profiling;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -31,10 +32,12 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
-        togglePhotoModeOn = false;
-        togglePhotoModeAnimator = GameObject.Find("PhotoMode").GetComponent<Animator>();
-        togglePhotoModeButton = GameObject.Find("PhotoMode").GetComponentInChildren<Button>();
-
+        if (SceneManager.GetActiveScene().name == "GameDefault" || SceneManager.GetActiveScene().name == "GameCustomQR")
+        {
+            togglePhotoModeOn = false;
+            togglePhotoModeAnimator = GameObject.Find("PhotoMode").GetComponent<Animator>();
+            togglePhotoModeButton = GameObject.Find("PhotoMode").GetComponentInChildren<Button>();
+        }
         togglePictureMode.onValueChanged.AddListener(delegate { ToggleQRValueChanged(togglePictureMode); });
     }
 
@@ -126,19 +129,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void onTogglePictureClick()
-    {
-        if (togglePictureMode.isOn)
-        {
-            togglePictureMode.isOn = true;
-            foundation.SetActive(false);
-        }
-        else
-        {
-            togglePictureMode.isOn = false;
-            foundation.SetActive(true);
-        }
-    }
+    
 
     public void OnMainMenuClick()
     {

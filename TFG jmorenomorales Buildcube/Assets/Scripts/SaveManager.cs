@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
@@ -39,6 +40,7 @@ public class SaveManager : MonoBehaviour
         switch (language)
         {
             case "ESP":
+
                 // Save Menu
 
                 Text [] textosEspSM = saveMenu.GetComponentsInChildren<Text>();
@@ -430,7 +432,10 @@ public class SaveManager : MonoBehaviour
     {
         confirmMenuRefresh.SetActive(false);
 
-        GameManager.Instance.ResetGrid();
+        if(SceneManager.GetActiveScene().name == "GameDefault" || SceneManager.GetActiveScene().name == "GameCustomQR")
+            GameManager.Instance.ResetGrid();
+        else
+            ChallengeManager.Instance.ResetGrid();
     }
 
     public void OnRefreshCancel()

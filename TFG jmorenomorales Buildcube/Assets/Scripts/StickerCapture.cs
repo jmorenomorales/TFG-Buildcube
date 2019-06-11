@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System.Runtime.InteropServices;
 using Vuforia;
+using UnityEngine.SceneManagement;
 
 public class StickerCapture : MonoBehaviour
 {
@@ -27,7 +28,10 @@ public class StickerCapture : MonoBehaviour
 
     private void Start()
     {
-        togglePhotoModeAnim = togglePhotoMode.GetComponent<Animator>();
+        if (SceneManager.GetActiveScene().name == "GameDefault" || SceneManager.GetActiveScene().name == "GameCustomQR")
+        {
+            togglePhotoModeAnim = togglePhotoMode.GetComponent<Animator>();
+        }
         camera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
         CreateDirectory();
     }
