@@ -11,6 +11,7 @@ public class MenuScene : MonoBehaviour
     public Text previewNameText;
     public Button[] levelSelectButtons;
     public Sprite[] levelSelectSprites;
+    public Sprite[] levelSelectSpritesDeactivated;
 
     private int saveCounter, previewIndex, availableLevels;
     private string language, previewName;
@@ -20,9 +21,9 @@ public class MenuScene : MonoBehaviour
     private Vector3 startClick;
     private bool isSwipingContainer;
     
-    public GameObject mainMenu, gameModeSelect, gridSelect, levelSelect, settingsMenu, UI;
+    public GameObject mainMenu, gameModeSelect, gridSelect, levelSelect, settingsMenu, UI, challengeSettingsMenu;
     private Animator mainMenuAnimator, gameModeSelectAnimator, gridSelectAnimator, levelSelectAnimator, settingsMenuAnimator;
-    public Toggle qRToggle;
+    public Toggle qRToggle, timeAttackToggle, seeBestTimeToggle;
 
     private void Start()
     {
@@ -30,9 +31,12 @@ public class MenuScene : MonoBehaviour
         language = PlayerPrefs.GetString("LANGUAGE");
         ChangeLanguage(language);
         //PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
+        PlayerPrefs.SetInt("TIMEATTACK", 0);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
         
         qRToggle.onValueChanged.AddListener(delegate { ToggleQRValueChanged(qRToggle); });
+        timeAttackToggle.onValueChanged.AddListener(delegate { ToggleTimeAttack(timeAttackToggle); });
+        seeBestTimeToggle.onValueChanged.AddListener(delegate { ToggleSeeBestTime(seeBestTimeToggle); });
 
         if (PlayerPrefs.GetInt("ISUSINGQR") == 1)
             qRToggle.isOn = true;
@@ -107,6 +111,21 @@ public class MenuScene : MonoBehaviour
                 }
             }
         }*/
+    }
+
+    private void ToggleTimeAttack(Toggle timeAttackToggle)
+    {
+        if (timeAttackToggle.isOn)
+            PlayerPrefs.SetInt("TIMEATTACK", 1);
+        else
+            PlayerPrefs.SetInt("TIMEATTACK", 0);
+    }
+    private void ToggleSeeBestTime(Toggle seeBestTimeToggle)
+    {
+        if (seeBestTimeToggle.isOn)
+            levelSelect.GetComponentsInChildren<Text>()[1].enabled = true;
+        else
+            levelSelect.GetComponentsInChildren<Text>()[1].enabled = false;
     }
 
     private void ToggleQRValueChanged(Toggle qRToggle)
@@ -337,7 +356,8 @@ public class MenuScene : MonoBehaviour
                 gridSelect.GetComponentInChildren<Text>().text = "ELIGE EL TAMAÑO DEL MAPA";
 
                 // LevelSelect Menu
-                levelSelect.GetComponentInChildren<Text>().text = "SELECCIÓN DE NIVEL";
+                levelSelect.GetComponentsInChildren<Text>()[0].text = "SELECCIÓN DE NIVEL";
+                levelSelect.GetComponentsInChildren<Text>()[1].text = "TU MEJOR TIEMPO: " + PlayerPrefs.GetString("BESTIME");
 
                 break;
             case "ENG":
@@ -360,7 +380,8 @@ public class MenuScene : MonoBehaviour
                 gridSelect.GetComponentInChildren<Text>().text = "CHOOSE THE SIZE OF THE MAP";
 
                 // LevelSelect Menu
-                levelSelect.GetComponentInChildren<Text>().text = "LEVEL SELECTOR";
+                levelSelect.GetComponentsInChildren<Text>()[0].text = "LEVEL SELECTOR";
+                levelSelect.GetComponentsInChildren<Text>()[1].text = "YOUR BEST TIME: " + PlayerPrefs.GetString("BESTIME");
 
                 break;
             default:
@@ -414,5 +435,30 @@ public class MenuScene : MonoBehaviour
                 Application.OpenURL("https://github.com/jmorenomorales");
                 break;
         }
+    }
+
+    public void OnLevelSelectorSettings()
+    {
+        challengeSettingsMenu.SetActive(true);
+        levelSelect.GetComponentsInChildren<Button>()[9].interactable = false;
+        levelSelect.GetComponentsInChildren<Button>()[10].interactable = false;
+    }
+
+    public void ResetLevels()
+    {
+        PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
+        availableLevels = 1;
+        for (int i = 1; i < 9; i++)
+        {
+            levelSelectButtons[i].image.sprite = levelSelectSpritesDeactivated[i];
+        }
+        Debug.Log(PlayerPrefs.GetInt("AVAILABLELEVELS"));
+    }
+
+    public void BackLevelSelectorSettings()
+    {
+        challengeSettingsMenu.SetActive(false);
+        levelSelect.GetComponentsInChildren<Button>()[9].interactable = true;
+        levelSelect.GetComponentsInChildren<Button>()[10].interactable = true;
     }
 }
