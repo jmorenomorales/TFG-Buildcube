@@ -73,7 +73,6 @@ public class StickerCapture : MonoBehaviour
 
     public void ShareImage()
     {
-        Debug.Log("He entrado en ShareImage()");
         screenshotName = "Screenshot_" + System.DateTime.Now.ToString("MM_dd_yyyy") + "_" + System.DateTime.Now.ToString("hh_mm_ss") + ".png";
         shareSubject = "I challenge you to beat my high score in Fire Block";
         shareMessage = "I challenge you to beat my high score in Fire Block. " +
@@ -88,7 +87,7 @@ public class StickerCapture : MonoBehaviour
 #if UNITY_ANDROID
         if (!isProcessing)
         {
-            StartCoroutine(ShareScreenshotInAnroid());
+            StartCoroutine(ShareScreenshotInAndroid());
         }
 #else
 		Debug.Log("No sharing set up for this platform.");
@@ -96,7 +95,7 @@ public class StickerCapture : MonoBehaviour
     }
 
 #if UNITY_ANDROID
-    public IEnumerator ShareScreenshotInAnroid()
+    public IEnumerator ShareScreenshotInAndroid()
     {
         isProcessing = true;
         // wait for graphics to render

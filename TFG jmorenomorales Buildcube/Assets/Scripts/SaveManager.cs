@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
-    public GameObject saveMenu, confirmSaveMenu, confirmDeleteMenu, confirmLoadMenu, settingsMenu, confirmMenuRefresh, colorPanel, savePrefab;
+    public GameObject saveMenu, confirmSaveMenu, confirmDeleteMenu, confirmLoadMenu, settingsMenu, confirmMenuRefresh, colorPanel, savePrefab, hintMenu;
     public InputField buildNameInput;
     public Transform saveList;
     public Dictionary<string, int> saves;
@@ -19,8 +19,13 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        RefreshSaves();
-        SetLanguage(PlayerPrefs.GetString("LANGUAGE"));
+        if(SceneManager.GetActiveScene().name != "Challenge")
+        {
+            RefreshSaves();
+            SetLanguage(PlayerPrefs.GetString("LANGUAGE"));
+        }
+        else
+            SetLanguageChallenge(PlayerPrefs.GetString("LANGUAGE"));
     }
 
     private void RefreshSaves()
@@ -138,6 +143,47 @@ public class SaveManager : MonoBehaviour
                 confirmMenuRefresh.GetComponentsInChildren<Text>()[1].text = "ARE YOU SURE YOU WANT TO REFRESH THIS BUILD?";
                 confirmMenuRefresh.GetComponentsInChildren<Text>()[2].text = "YES";
                 confirmMenuRefresh.GetComponentsInChildren<Text>()[3].text = "CANCEL";
+
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    private void SetLanguageChallenge(string language)
+    {
+        switch (language)
+        {
+            case "ESP":
+
+                // Settings Menu
+
+                settingsMenu.GetComponentsInChildren<Text>()[0].text = "AJUSTES";
+                settingsMenu.GetComponentsInChildren<Text>()[1].text = "IDIOMA";
+                settingsMenu.GetComponentsInChildren<Text>()[2].text = "VER LA CUADRÍCULA";
+                settingsMenu.GetComponentsInChildren<Text>()[3].text = "DESARROLLADOR";
+                settingsMenu.GetComponentsInChildren<Text>()[5].text = "CONTINUAR";
+                settingsMenu.GetComponentsInChildren<Text>()[6].text = "MENÚ PRINCIPAL";
+
+                // Hint Menu
+                hintMenu.GetComponentsInChildren<Text>()[0].text = "HAZ ESTE DIBUJO";
+
+
+                break;
+            case "ENG":
+
+                // Settings Menu
+
+                settingsMenu.GetComponentsInChildren<Text>()[0].text = "SETTINGS";
+                settingsMenu.GetComponentsInChildren<Text>()[1].text = "LANGUAGE";
+                settingsMenu.GetComponentsInChildren<Text>()[2].text = "SEE THE GRID";
+                settingsMenu.GetComponentsInChildren<Text>()[3].text = "DEVELOPER";
+                settingsMenu.GetComponentsInChildren<Text>()[5].text = "RESUME";
+                settingsMenu.GetComponentsInChildren<Text>()[6].text = "MAIN MENU";
+
+                // Hint Menu
+                hintMenu.GetComponentsInChildren<Text>()[0].text = "MAKE THIS BUILD";
 
                 break;
             default:
@@ -472,6 +518,19 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetString("LANGUAGE", "ENG");
         SetLanguage(PlayerPrefs.GetString("LANGUAGE"));
     }
+
+    public void OnSpanishFlagOnChallengeClick()
+    {
+        PlayerPrefs.SetString("LANGUAGE", "ESP");
+        SetLanguageChallenge(PlayerPrefs.GetString("LANGUAGE"));
+    }
+
+    public void OnEnglishFlagOnChallengeClick()
+    {
+        PlayerPrefs.SetString("LANGUAGE", "ENG");
+        SetLanguageChallenge(PlayerPrefs.GetString("LANGUAGE"));
+    }
+
 
     public void OnSettingsClick()
     {

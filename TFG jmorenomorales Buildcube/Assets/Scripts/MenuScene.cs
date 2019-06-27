@@ -28,10 +28,19 @@ public class MenuScene : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
+        if(PlayerPrefs.GetString("LANGUAGE", "NOLANGUAGE") == "NOLANGUAGE")
+        {
+            PlayerPrefs.SetString("LANGUAGE", "ESP");
+        }
         language = PlayerPrefs.GetString("LANGUAGE");
         ChangeLanguage(language);
-        //PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
-        PlayerPrefs.SetInt("TIMEATTACK", 0);
+
+        if(PlayerPrefs.GetInt("AVAILABLELEVELS", -100) == -100)
+        {
+            PlayerPrefs.SetInt("AVAILABLELEVELS", 1);
+        }
+
+        //PlayerPrefs.SetInt("TIMEATTACK", 0);
         availableLevels = PlayerPrefs.GetInt("AVAILABLELEVELS");
         
         qRToggle.onValueChanged.AddListener(delegate { ToggleQRValueChanged(qRToggle); });
@@ -357,7 +366,12 @@ public class MenuScene : MonoBehaviour
 
                 // LevelSelect Menu
                 levelSelect.GetComponentsInChildren<Text>()[0].text = "SELECCIÓN DE NIVEL";
-                levelSelect.GetComponentsInChildren<Text>()[1].text = "TU MEJOR TIEMPO: " + PlayerPrefs.GetString("BESTIME");
+                //levelSelect.GetComponentsInChildren<Text>()[1].text = "TU MEJOR TIEMPO: " + PlayerPrefs.GetString("BESTIME");
+
+                // Challenge Settings Menu
+                challengeSettingsMenu.GetComponentsInChildren<Text>()[0].text = "AJUSTES MODO DESAFÍO";
+                challengeSettingsMenu.GetComponentsInChildren<Text>()[1].text = "RESETEAR NIVELES";
+                challengeSettingsMenu.GetComponentsInChildren<Text>()[2].text = "VOLVER";
 
                 break;
             case "ENG":
@@ -381,7 +395,12 @@ public class MenuScene : MonoBehaviour
 
                 // LevelSelect Menu
                 levelSelect.GetComponentsInChildren<Text>()[0].text = "LEVEL SELECTOR";
-                levelSelect.GetComponentsInChildren<Text>()[1].text = "YOUR BEST TIME: " + PlayerPrefs.GetString("BESTIME");
+                //levelSelect.GetComponentsInChildren<Text>()[1].text = "YOUR BEST TIME: " + PlayerPrefs.GetString("BESTIME");
+                
+                // Challenge Settings Menu
+                challengeSettingsMenu.GetComponentsInChildren<Text>()[0].text = "CHALLENGE MODE SETTINGS";
+                challengeSettingsMenu.GetComponentsInChildren<Text>()[1].text = "RESET LEVELS";
+                challengeSettingsMenu.GetComponentsInChildren<Text>()[2].text = "BACK";
 
                 break;
             default:
@@ -440,7 +459,7 @@ public class MenuScene : MonoBehaviour
     public void OnLevelSelectorSettings()
     {
         challengeSettingsMenu.SetActive(true);
-        levelSelect.GetComponentsInChildren<Button>()[9].interactable = false;
+        levelSelect.GetComponentsInChildren<Button>()[0].interactable = false;
         levelSelect.GetComponentsInChildren<Button>()[10].interactable = false;
     }
 
@@ -458,7 +477,7 @@ public class MenuScene : MonoBehaviour
     public void BackLevelSelectorSettings()
     {
         challengeSettingsMenu.SetActive(false);
-        levelSelect.GetComponentsInChildren<Button>()[9].interactable = true;
+        levelSelect.GetComponentsInChildren<Button>()[0].interactable = true;
         levelSelect.GetComponentsInChildren<Button>()[10].interactable = true;
     }
 }

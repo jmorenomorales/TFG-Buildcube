@@ -153,7 +153,7 @@ public class ChallengeManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (EventSystem.current.IsPointerOverGameObject() /*EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)*/)
+                if (/*EventSystem.current.IsPointerOverGameObject()*/ EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                     return;
 
                 RaycastHit hit;

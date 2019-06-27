@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/Jorge/Desktop/Cuantopesa.apk
+C:/Users/Jorge/Desktop/ApkSinTimer.apk
 SceneListBegin?
 Assets/_Scenes/Menu.unity
 Assets/_Scenes/GameDefault.unity
@@ -99,7 +99,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-c51a177b713fd3c62f277dee2c5584d4 Assembly-CSharp.dll:.MenuScene
+21564e3ced9dad2e3b4027d4a50cf75a Assembly-CSharp.dll:.MenuScene
 36eec4ad2adffcd8a4600a5022430ca3 Assembly-CSharp.dll:TouchScript.Examples.Colors.Colors
 b3099a127ad5cca97853e42ed4e6b984 Assembly-CSharp.dll:TouchScript.Behaviors.Cursors.ObjectCursor
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TouchScript.Examples.Multiuser.Logo
@@ -320,7 +320,7 @@ bd93da66773be9182d84b7dc6c94e717 Assembly-CSharp.dll:.RockPileController
 dda75e95d915b27bdb9b30373c5818a6 Assembly-CSharp.dll:.TouchHandler
 bd4f1622718fab3b6669ae30d89f1f82 Assembly-CSharp.dll:.AstronautStateMachineBehaviour
 dff7a11839abb9fb7222280cf3c0a95a VuforiaScripts.dll:.DefaultModelRecoEventHandler
-1e2eb734683a232e960a1f26d393118e Assembly-CSharp.dll:.SaveManager
+a0e0c550a3934005a1510450d8f91d56 Assembly-CSharp.dll:.SaveManager
 9870d07becb995371db036f64345cf30 Assembly-CSharp.dll:.FrameQualityMeter
 13d0b808f4abc62877f71e012710d04a Assembly-CSharp.dll:.ModelTargetAugmentationHandler
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
