@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CameraFocus">
+    <Position X="13" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CameraFocus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgNAAAACAAwAQABEABAAAAAgAIRAEoSxCQFAEiACA=</HashCode>
+      <FileName>Assets\Scripts\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UDTManager" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAIAAACAAAAAACAAAAAAAgAAgAAAgCAIAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\UDTManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="StickerCapture">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAVCAAAAQiAAAAIEgBAAAoAAAAICAAADAAgAAEAAAYg=</HashCode>
+      <FileName>Assets\Scripts\StickerCapture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveManager">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAkhIAAACAAwhREICKCACAgAAJYUCAQAoIAADEEgCg=</HashCode>
+      <FileName>Assets\Scripts\SaveManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuScene">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>I9wBjQCAETiACAiEDAIAAAggBQoEEJgAWIQ0EBAEUPE=</HashCode>
+      <FileName>Assets\Scripts\MenuScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Block">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQDAAAAAmAAREAJIAIAAgAAghAQAAAmbAJAAAIABAE=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChallengeManager">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQDQAgAgmAARkAJIAJAAgEAghAQAgEmbAJAAAIBEAU=</HashCode>
+      <FileName>Assets\Scripts\ChallengeManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="BlockAction">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="BlockColor">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAABEAQCBApCASAAABFAAFBBAAAYAAAAIADAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

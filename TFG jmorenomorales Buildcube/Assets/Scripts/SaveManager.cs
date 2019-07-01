@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
+    #region Variables
     public GameObject saveMenu, confirmSaveMenu, confirmDeleteMenu, confirmLoadMenu, settingsMenu, confirmMenuRefresh, colorPanel, savePrefab, hintMenu;
     public InputField buildNameInput;
     public Transform saveList;
@@ -16,6 +17,8 @@ public class SaveManager : MonoBehaviour
     private bool isSaving, isEnglish;
     
     public Sprite saveDes;
+
+    #endregion
 
     void Start()
     {
@@ -321,7 +324,6 @@ public class SaveManager : MonoBehaviour
 
         if (!saves.ContainsValue(k))
         {
-            Debug.Log("Unable to delete build");
             return;
         }
 
@@ -346,7 +348,6 @@ public class SaveManager : MonoBehaviour
     {
         string buildName;
         buildName = buildNameInput.text;
-        Debug.Log("BuildName " + buildName);
         bool isUsed = (saves.ContainsKey(buildName));
 
         if (string.IsNullOrEmpty(buildName))
@@ -376,7 +377,6 @@ public class SaveManager : MonoBehaviour
         }
 
         saveData += GameManager.Instance.blocks.GetLength(0) + "%";
-        Debug.Log(saveData);
 
         if (isUsed)
         {
@@ -404,7 +404,6 @@ public class SaveManager : MonoBehaviour
 
         if (!saves.ContainsValue(k))
         {
-            Debug.Log("Unable to find build");
             return;
         }
 
@@ -412,8 +411,6 @@ public class SaveManager : MonoBehaviour
         string[] blockData = save.Split('%');
 
         GameManager.Instance.ResetGrid();
-        
-        Debug.Log(blockData[blockData.Length - 2]);
         
         switch(blockData[blockData.Length-2])
         {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ChallengeManager : MonoBehaviour
 {
+    #region Variables
     public static ChallengeManager Instance { set; get; }
 
     private float[][] gridSettings;                                     // Recogemos la configuración del grid elegida por el usuario
@@ -45,6 +46,8 @@ public class ChallengeManager : MonoBehaviour
     public GameObject hintsPanel;
     public Image hintImage;
 
+    #endregion
+    
     private void Start()
     {
         Instance = this;
@@ -135,8 +138,6 @@ public class ChallengeManager : MonoBehaviour
                 }
             }
         }
-
-        //Debug.Log(currentMap);
     }
 
     public void ToogleHintMenu()
@@ -149,7 +150,7 @@ public class ChallengeManager : MonoBehaviour
 
     private void Update()
     {
-        if (/*Hay tiempo &&*/  !isCorrectBool)
+        if (!isCorrectBool)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -276,32 +277,23 @@ public class ChallengeManager : MonoBehaviour
                 currentMap = null;
                 ResetGrid();
                 ChangeGrid();
-
-                //UnityEngine.SceneManagement.SceneManager.LoadScene("Challenge");
             }
             else
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
             }
         }
-        /*
-        {
-            // No hay tiempo
-            currentMap = null;
-        }*/
 
     }
+
     private void isCorrect()
     {
-        Debug.Log("Vamo a comprobarlo");
         if (currentMap == maps[selectedLevel])
         {
             isCorrectBool = true;
-            Debug.Log("Ta chido");
         }
     }
     
-
     // Método de creación de bloques
     private GameObject CreateBlock()
     {
@@ -369,7 +361,8 @@ public class ChallengeManager : MonoBehaviour
             colorPanel.SetActive(false);
             colorButton.image.sprite = colorDes;
         }
-        isDeleting = !isDeleting;
+        if (!isDeleting)
+            isDeleting = true;
         deleteButton.image.sprite = (!isDeleting) ? deleteButtons[0] : deleteButtons[1];
     }
 
@@ -404,10 +397,6 @@ public class ChallengeManager : MonoBehaviour
 
                 PositionBlock(go.transform, helper.index);
             }
-        }
-        else
-        {
-            Debug.Log("Ya no queda nada...");
         }
     }
 

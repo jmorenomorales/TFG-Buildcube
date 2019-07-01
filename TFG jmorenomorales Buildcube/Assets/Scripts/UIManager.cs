@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    #region Variables
     public RectTransform colorMenu;
     public RectTransform actionMenu;
     public Sprite eraseDes, eraseSel, saveDes, saveSel, colorDes, colorSel;
@@ -28,6 +29,8 @@ public class UIManager : MonoBehaviour
     private Button togglePhotoModeButton;
 
     public static UIManager Instance { set; get; }
+
+    #endregion
 
     private void Start()
     {
@@ -110,6 +113,19 @@ public class UIManager : MonoBehaviour
                     eraseButton.image.sprite = eraseDes;
                     colorButton.image.sprite = colorSel;
                 }
+                break;
+        }
+    }
+
+    public void OnDeveloperButtonClick(int whichUrl)
+    {
+        switch (whichUrl)
+        {
+            case 0:
+                Application.OpenURL("https://twitter.com/kokebr_");
+                break;
+            case 1:
+                Application.OpenURL("https://github.com/jmorenomorales");
                 break;
         }
     }

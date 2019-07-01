@@ -4904,7 +4904,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7d5d69595d5d74979a908df2365b5835, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2f0865dfaa3864b81b85cfa484c386, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9206,7 +9206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1031054917}
         m_MethodName: OnDeveloperButtonClick
         m_Mode: 3
         m_Arguments:
@@ -12070,6 +12070,7 @@ MonoBehaviour:
   colorPanel: {fileID: 494186333}
   savePrefab: {fileID: 5996285129333694856, guid: 911374cd1f09cab49b345bee3b579b01,
     type: 3}
+  hintMenu: {fileID: 0}
   buildNameInput: {fileID: 656483578}
   saveList: {fileID: 639796549}
   saveButton: {fileID: 1752678485}
@@ -13274,8 +13275,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1919497701}
   m_HandleRect: {fileID: 1919497700}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.9999999
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15373,7 +15374,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1031054917}
         m_MethodName: OnDeveloperButtonClick
         m_Mode: 3
         m_Arguments:

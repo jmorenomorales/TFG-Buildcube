@@ -254,6 +254,7 @@
     <None Include="Assets\SamplesResources\SceneAssets\VirtualButtons\Shaders\Gradient.shader" />
     <None Include="Assets\TouchScript\Shaders\DebugDepthTest.shader" />
     <None Include="Assets\Vuforia\Shaders\CameraDiffuse.shader" />
+    <None Include="Assets\StreamingAssets\Vuforia\ARPrueba.xml" />
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Common\TextMeshPro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\StreamingAssets\Vuforia\VuforiaMars_ModelTarget.xml" />
@@ -264,7 +265,6 @@
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TouchScript\license.txt" />
     <None Include="Assets\Common\TextMeshPro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\StreamingAssets\Vuforia\ARPrueba.xml" />
     <None Include="Assets\StreamingAssets\Vuforia\Vuforia_Motorcycle_Marslander.xml" />
     <None Include="Assets\TouchScript\Shaders\Cursor.shader" />
     <None Include="Assets\TouchScript\Shaders\DebugMultiplyDepthTest.shader" />

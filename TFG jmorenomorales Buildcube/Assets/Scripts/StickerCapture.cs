@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class StickerCapture : MonoBehaviour
 {
+    #region Variables
     public GameObject camera, worldSpacePlane;
     public RawImage rawImage;
     public RectTransform touchPanel;
@@ -26,6 +27,8 @@ public class StickerCapture : MonoBehaviour
 
     private bool cameraMode = false;
 
+    #endregion
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "GameDefault" || SceneManager.GetActiveScene().name == "GameCustomQR")
@@ -34,12 +37,6 @@ public class StickerCapture : MonoBehaviour
         }
         camera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
         CreateDirectory();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            TakeImage();
     }
 
     private void ResetRectTransform()
@@ -74,10 +71,10 @@ public class StickerCapture : MonoBehaviour
     public void ShareImage()
     {
         screenshotName = "Screenshot_" + System.DateTime.Now.ToString("MM_dd_yyyy") + "_" + System.DateTime.Now.ToString("hh_mm_ss") + ".png";
-        shareSubject = "I challenge you to beat my high score in Fire Block";
+        /*shareSubject = "I challenge you to beat my high score in Fire Block";
         shareMessage = "I challenge you to beat my high score in Fire Block. " +
         ". Get the Fire Block app from the link below. \nCheers\n" +
-        "\nhttp://onelink.to/fireblock";
+        "\nhttp://onelink.to/fireblock";*/
 
         ShareScreenshot();
     }
@@ -123,8 +120,9 @@ public class StickerCapture : MonoBehaviour
             //put image and string extra
             intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_STREAM"), uriObject);
             intentObject.Call<AndroidJavaObject>("setType", "image/png");
+            /*
             intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_SUBJECT"), shareSubject);
-            intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), shareMessage);
+            intentObject.Call<AndroidJavaObject>("putExtra", intentClass.GetStatic<string>("EXTRA_TEXT"), shareMessage);*/
             /*
             t1.text = "He entrado en las 3 ultimas instrucciones";
             AndroidJavaClass unity = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
@@ -148,8 +146,6 @@ public class StickerCapture : MonoBehaviour
             {
                 jcMediaScannerConnection.CallStatic("scanFile", joContext, new string[] { Path }, null, null);
             }
-
-            Debug.Log("Por favor he funcionado");
         }
 
         //yield return new WaitUntil(() => isFocus);

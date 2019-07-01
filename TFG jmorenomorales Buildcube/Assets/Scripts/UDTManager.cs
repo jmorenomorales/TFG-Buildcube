@@ -5,6 +5,7 @@ using Vuforia;
 
 public class UDTManager : MonoBehaviour, IUserDefinedTargetEventHandler
 {
+    #region Variables
     UserDefinedTargetBuildingBehaviour udt_targetBuildingBehaviour;
 
     ObjectTracker objectTracker;
@@ -13,6 +14,8 @@ public class UDTManager : MonoBehaviour, IUserDefinedTargetEventHandler
     ImageTargetBuilder.FrameQuality udt_FrameQuality;
 
     public ImageTargetBehaviour targetBehaviour;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()

@@ -53,6 +53,7 @@ public struct BlockAction
 
 public class GameManager : MonoBehaviour
 {
+    #region Variables
     public static GameManager Instance { set; get; }
 
     private float[][] gridSettings;                                     // Recogemos la configuración del grid elegida por el usuario
@@ -84,6 +85,8 @@ public class GameManager : MonoBehaviour
     private BlockAction playerAction;
     private string gameMode, gridTypeLoadedMap;
 
+    #endregion
+
     private void Start()
     {
         Instance = this;
@@ -93,7 +96,6 @@ public class GameManager : MonoBehaviour
         playerActions = new Stack<BlockAction>();
 
         gameMode = PlayerPrefs.GetString("GAMEMODE");
-        Debug.Log(gameMode);
 
 
         // Carga del mapa
@@ -192,8 +194,6 @@ public class GameManager : MonoBehaviour
                 int x = (int)index.x
                     , y = (int)index.y
                     , z = (int)index.z;
-
-                Debug.Log(x + ", " + y + ", " + z);
 
                 // Si no hay un bloque en esa posicion del plano
                 if (blocks[x, y, z] == null)
@@ -333,7 +333,9 @@ public class GameManager : MonoBehaviour
             colorPanel.SetActive(false);
             colorButton.image.sprite = colorDes;
         }
-        isDeleting = !isDeleting;
+
+        if(!isDeleting)
+            isDeleting = true;
         deleteButton.image.sprite = (!isDeleting) ? deleteButtons[0] : deleteButtons[1];
     }
 
@@ -373,10 +375,6 @@ public class GameManager : MonoBehaviour
 
                 PositionBlock(go.transform, helper.index);
             }
-        }
-        else
-        {
-            Debug.Log("Ya no queda nada...");
         }
     }
 
